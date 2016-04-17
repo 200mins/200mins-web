@@ -18,7 +18,7 @@ gulp.task('css', ['app-css', 'vendor-css'], function () {
 });
 
 gulp.task('app-css', function () {
-    return gulp.src('./src/app.css')
+    return gulp.src('./src/styles/app.css')
         .pipe(gulp.dest('./tmp/'));
 });
 
