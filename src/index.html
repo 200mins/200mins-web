@@ -2,14 +2,16 @@
 
 <head>
     <title>200mins</title>
+    <link rel="icon" href="favicon.ico" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic" />
 
+    <!-- build:css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
-
     <link rel="stylesheet" href="styles/app.css" />
+    <!-- endbuild -->
 </head>
 
 <body>
@@ -39,6 +41,7 @@
         </div>
     </div>
 
+    <!-- build:js -->
     <!-- bower:js -->
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -48,23 +51,21 @@
     <script src="../bower_components/angular-material/angular-material.js"></script>
     <script src="../bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
-
     <!-- Application -->
     <script src="js/app.js"></script>
     <script src="js/config.js"></script>
     <script src="js/run.js"></script>
-
     <!-- Constants -->
     <script src="constants/CONFIG.js"></script>
     <script src="constants/ENDPOINTS.js"></script>
     <script src="constants/ENV.js"></script>
     <script src="constants/VERSION.js"></script>
-
     <!-- Modules -->
     <script src="modules/common/utilityService.js"></script>
     <script src="modules/home/HomeCtrl.js"></script>
     <script src="modules/movie/MoviesCtrl.js"></script>
     <script src="modules/movie/movieService.js"></script>
+    <!-- endbuild -->
 </body>
 
 </html>

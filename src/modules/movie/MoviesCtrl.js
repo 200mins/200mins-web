@@ -4,6 +4,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$scope', 'movieService'
 
     /* --- MODELS --- */
 
+    // $scope.isEOC = false;
     // $scope.isNascent = false;
     // $scope.getMoviesParams = { limit: 20, page: 1 };
     // $scope.movies = [];
@@ -12,6 +13,8 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$scope', 'movieService'
     /* --- FUNCTIONS --- */
 
     $scope.initialize = function () {
+
+        $scope.isEOC = false;
 
         $scope.isNascent = false;
 
@@ -43,11 +46,15 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$scope', 'movieService'
 
                     utilityService.notify(0, 'That\'s all we got.');
 
+                    $scope.isEOC = true;
+
                 }
 
             } else {
 
                 utilityService.notify(-1, 'Couldn\'t get movies.');
+
+                $scope.isEOC = true;
 
             }
 
