@@ -18,7 +18,7 @@
         <md-sidenav md-component-id="sidenav" class="md-sidenav-left">
             <md-toolbar>
                 <div class="md-toolbar-tools">
-                    <span>200mins</span>
+                    <a ui-sref="home">200mins</a>
                     <span flex></span>
                     <md-button class="md-icon-button" aria-label="Close Sidenav" ng-click="$root.closeSidenav()">
                         <md-icon md-svg-src="img/ic_close_white_24px.svg"></md-icon>
@@ -32,10 +32,10 @@
                     <md-button class="md-icon-button" aria-label="Open Sidenav" ng-click="$root.openSidenav()">
                         <md-icon md-svg-src="img/ic_menu_white_24px.svg"></md-icon>
                     </md-button>
-                    <span>200mins</span>
+                    <a ui-sref="home">200mins</a>
                 </div>
             </md-toolbar>
-            <md-content ui-view></md-content>
+            <md-content ui-view style="padding-top: 10px;"></md-content>
         </div>
     </div>
 
@@ -61,7 +61,10 @@
     <script src="constants/VERSION.js"></script>
 
     <!-- Modules -->
+    <script src="modules/common/utilityService.js"></script>
     <script src="modules/home/HomeCtrl.js"></script>
+    <script src="modules/movie/MoviesCtrl.js"></script>
+    <script src="modules/movie/movieService.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,34 @@
+/* Element Overrides */
+
+body, md-content {
+    background-image: url('../img/bg.gif');
+}
+
+/* Global Styles */
+
+.last-element {
+    margin: 25px 0 !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.png-icon {
+    border-radius: 2px;
+    display: inline-block;
+    height: 24px;
+    margin-right: 2px;
+    vertical-align: middle;
+    width: 24px;
+}
+
+.small-button {
+    min-width: 30%;
+}
+
+/* Home */
+
 .hero {
     background-image: url('https://unsplash.it/1200/500?image=902');
     background-position: center;
@@ -18,4 +49,14 @@
 .hero .md-button {
     font-size: 18px;
     padding: 6px 18px;
+}
+
+/* Movies */
+
+.movie-card {
+    width: 250px;
+}
+
+.movie-card .md-card-image {
+    height: 375px;
 }

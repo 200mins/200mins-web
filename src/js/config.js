@@ -15,6 +15,11 @@ angular.module('200mins-web').config(['$mdThemingProvider', '$stateProvider', '$
             url: '/',
             controller: 'HomeCtrl',
             templateUrl: 'modules/home/home.html'
+        })
+        .state('movies', {
+            url: '/movies',
+            controller: 'MoviesCtrl',
+            templateUrl: 'modules/movie/movies.html'
         });
 
 }]);
