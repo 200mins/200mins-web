@@ -3,14 +3,41 @@
 <head>
     <title>200mins</title>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic" />
+
     <!-- bower:css -->
     <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
+
+    <link rel="stylesheet" href="styles/app.css" />
 </head>
 
 <body>
 
-    <div ui-view></div>
+    <div layout="row">
+        <md-sidenav md-component-id="sidenav" class="md-sidenav-left">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <span>200mins</span>
+                    <span flex></span>
+                    <md-button class="md-icon-button" aria-label="Close Sidenav" ng-click="$root.closeSidenav()">
+                        <md-icon md-svg-src="img/ic_close_white_24px.svg"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+        </md-sidenav>
+        <div layout="column" layout-fill>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" aria-label="Open Sidenav" ng-click="$root.openSidenav()">
+                        <md-icon md-svg-src="img/ic_menu_white_24px.svg"></md-icon>
+                    </md-button>
+                    <span>200mins</span>
+                </div>
+            </md-toolbar>
+            <md-content ui-view></md-content>
+        </div>
+    </div>
 
     <!-- bower:js -->
     <script src="../bower_components/angular/angular.js"></script>

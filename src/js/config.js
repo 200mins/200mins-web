@@ -1,10 +1,14 @@
 'use strict';
 
-angular.module('200mins-web').config(['$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
+angular.module('200mins-web').config(['$mdThemingProvider', '$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function ($mdThemingProvider, $stateProvider, $urlRouterProvider, localStorageServiceProvider) {
 
-    localStorageServiceProvider.setPrefix('200mins');
+    $mdThemingProvider.theme('default')
+    .primaryPalette('pink')
+    .accentPalette('green');
 
     $urlRouterProvider.otherwise('/');
+
+    localStorageServiceProvider.setPrefix('200mins');
 
     $stateProvider
         .state('home', {
