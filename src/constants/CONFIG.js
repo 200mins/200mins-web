@@ -8,7 +8,7 @@ angular.module('200mins-web').constant('CONFIG', {
     },
 
     PROD: {
-        domain: 'http://200mins.com',
+        domain: 'http://api.200mins.com',
         port: 1339
     }
 
