@@ -1,0 +1,23 @@
+{
+  "name": "200mins-web",
+  "version": "1.0.0",
+  "description": "Web app for 200mins.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/200mins/200mins-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/200mins/200mins-web/issues"
+  },
+  "homepage": "https://github.com/200mins/200mins-web#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "wiredep": "^4.0.0"
+  }
+}

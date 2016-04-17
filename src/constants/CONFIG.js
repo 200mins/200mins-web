@@ -1,0 +1,6 @@
+'use strict';
+
+angular.module('200mins-web').constant('CONFIG', {
+    DEV: {},
+    PROD: {}
+});
