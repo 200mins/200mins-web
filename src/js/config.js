@@ -3,8 +3,7 @@
 angular.module('200mins-web').config(['$mdThemingProvider', '$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function ($mdThemingProvider, $stateProvider, $urlRouterProvider, localStorageServiceProvider) {
 
     $mdThemingProvider.theme('default')
-    .primaryPalette('pink')
-    .accentPalette('green');
+        .primaryPalette('pink');
 
     $urlRouterProvider.otherwise('/');
 
@@ -12,14 +11,24 @@ angular.module('200mins-web').config(['$mdThemingProvider', '$stateProvider', '$
 
     $stateProvider
         .state('home', {
-            url: '/',
             controller: 'HomeCtrl',
-            templateUrl: 'modules/home/home.html'
+            templateUrl: 'modules/common/home.html',
+            url: '/'
         })
-        .state('movies', {
-            url: '/movies',
-            controller: 'MoviesCtrl',
-            templateUrl: 'modules/movie/movies.html'
+        .state('movie', {
+            abstract: true,
+            template: '<ui-view/>',
+            url: '/movies'
+        })
+        .state('movie.browse', {
+            controller: 'MovieBrowseCtrl',
+            templateUrl: 'modules/movie/movie-browse.html',
+            url: '/'
+        })
+        .state('movie.filter', {
+            controller: 'MovieFilterCtrl',
+            templateUrl: 'modules/movie/movie-filter.html',
+            url: '/filters'
         });
 
 }]);

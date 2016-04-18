@@ -1,3 +1,16 @@
+<div layout="column">
+    <md-toolbar style="background-color: white;">
+        <div class="md-toolbar-tools">
+            <span style="color: black;" ng-show="!!numMovies">{{::numMovies}} movies found</span>
+            <span flex></span>
+            <md-button class="md-raised md-primary" ng-click="$root.changeState('movie.filter')">
+                <md-icon md-svg-src="img/ic_filter_list_white_24px.svg"></md-icon>
+                <span>Filters</span>
+            </md-button>
+        </div>
+    </md-toolbar>
+</div>
+
 <div layout="row" layout-wrap layout-align="space-around start" style="padding-top: 10px;">
 
     <md-card class="movie-card" ng-repeat="movie in movies">
@@ -15,7 +28,7 @@
                 <md-button class="md-icon-button no-margin" aria-label="Info." ng-click="selectMovie(movie.id, 'info')">
                     <md-icon md-svg-src="img/ic_info_black_24px.svg"></md-icon>
                 </md-button>
-                <md-button class="md-icon-button no-margin" aria-label="Open" ng-click="$root.changeState('movie.details', movie.slug)">
+                <md-button class="md-icon-button no-margin" aria-label="Open" ng-click="$root.changeState('movie.detail', movie.slug)">
                     <md-icon md-svg-src="img/ic_theaters_black_24px.svg"></md-icon>
                 </md-button>
             </section>
