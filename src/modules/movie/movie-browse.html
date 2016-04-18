@@ -4,8 +4,7 @@
             <span style="color: black;" ng-show="!!numMovies">Browsing {{::numMovies}} movies</span>
             <span flex></span>
             <md-button class="md-raised md-primary" ng-click="$root.changeState('movie.filter')">
-                <md-icon md-svg-src="img/ic_filter_list_white_24px.svg"></md-icon>
-                <span>Filters: <span ng-hide="filters === null">ON</span><span ng-hide="filters !== null">OFF</span>&nbsp;</span>
+                <md-icon md-svg-src="img/ic_filter_list_white_24px.svg"></md-icon>&nbsp;<span>Filters: <span ng-hide="filters === null">ON</span><span ng-hide="filters !== null">OFF</span>&nbsp;</span>
             </md-button>
         </div>
     </md-toolbar>
@@ -29,12 +28,10 @@
                     <md-icon md-svg-src="img/ic_theaters_black_24px.svg"></md-icon>
                 </md-button>
                 <md-button ng-href="http://www.imdb.com/title/{{movie.imdb_code}}" target="_blank" class="small-button no-margin" aria-label="IMDb Rating">
-                    <img class="png-icon" src="img/imdb.png">
-                    <span>{{movie.rating}}</span>
+                    <img class="png-icon" src="img/imdb.png">&nbsp;<span>{{movie.rating}}</span>
                 </md-button>
                 <md-button ng-disabled="true" style="color: black !important;" class="small-button no-margin" aria-label="Year">
-                    <md-icon md-svg-src="img/ic_watch_later_black_24px.svg"></md-icon>
-                    <span>{{movie.year}}</span>
+                    <md-icon md-svg-src="img/ic_date_range_black_24px.svg"></md-icon>&nbsp;<span>{{movie.year}}</span>
                 </md-button>
             </section>
 

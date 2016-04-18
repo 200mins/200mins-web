@@ -13,7 +13,7 @@ var wiredep = require('wiredep').stream;
 gulp.task('css', ['app-css', 'vendor-css'], function () {
     return gulp.src(['./tmp/vendor.css', './tmp/app.css'])
         .pipe(concat('app.css'))
-        .pipe(cssmin({ 'processImport': false }))
+        .pipe(cssmin())
         .pipe(gulp.dest('./dist/'));
 });
 
