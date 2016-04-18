@@ -5,21 +5,51 @@ angular.module('200mins-web').controller('MovieFilterCtrl', ['$rootScope', '$sco
     /* --- MODELS --- */
 
     // $scope.filter = {
-    //     genre: 'action' || 'adventure' || 'animation' || 'biography' || 'comedy' || 'crime' || 'documentary' || 'drama' || 'family' || 'fantasy' || 'film-noir' || 'history' || 'horror' || 'music' || 'musical' || 'mystery' || 'romance' || 'sci-fi' || 'sport' || 'thriller' || 'war' || 'western',
+    //     genre: ANY_GENRE,
     //     minimum_rating: INT(0-9),
-    //     order_by: 'asc' || 'desc',
-    //     quality: '3D' || '720p' || '1080p',
-    //     sort_by: 'date_added' || 'download_count' || 'peers' || 'rating' || 'seeds' || 'title' || 'year'
+    //     quality: ANY_QUALITY
     // };
+
+    $scope.genres = [
+        { name: 'Action', value: 'action' },
+        { name: 'Adventure', value: 'adventure' },
+        { name: 'Animation', value: 'animation' },
+        { name: 'Biography', value: 'biography' },
+        { name: 'Comedy', value: 'comedy' },
+        { name: 'Crime', value: 'crime' },
+        { name: 'Documentary', value: 'documentary' },
+        { name: 'Drama', value: 'drama' },
+        { name: 'Family', value: 'family' },
+        { name: 'Fantasy', value: 'fantasy' },
+        { name: 'Film-Noir', value: 'film-noir' },
+        { name: 'History', value: 'history' },
+        { name: 'Horror', value: 'horror' },
+        { name: 'Music', value: 'music' },
+        { name: 'Musical', value: 'musical' },
+        { name: 'Mystery', value: 'mystery' },
+        { name: 'Romance', value: 'romance' },
+        { name: 'Sci-Fi', value: 'sci-fi' },
+        { name: 'Sport', value: 'sport' },
+        { name: 'Thriller', value: 'thriller' },
+        { name: 'War', value: 'war' },
+        { name: 'Western', value: 'western' }
+    ];
+
+    $scope.videoQualities = [
+        { name: '3D', value: '3D' },
+        { name: '720p', value: '720p' },
+        { name: '1080p', value: '1080p' }
+    ];
 
     /* --- FUNCTIONS --- */
 
     $scope.initialize = function () {
 
+        $scope.filters = { genre: 'all', minimum_rating: 0, quality: 'all' };
+
         var filters = localStorageService.get('filters');
 
-        // TODO: Link default values to form inputs
-        $scope.filters = !!filters ? { genre: null, minimum_rating: 0, order_by: null, quality: null, sort_by: null } : filters;
+        !!filters ? $scope.filters = utilityService.mergeObjects($scope.filters, filters, true) : null;
 
     };
 
@@ -34,27 +64,46 @@ angular.module('200mins-web').controller('MovieFilterCtrl', ['$rootScope', '$sco
     };
 
     // TODO: Don't save null filters
+
     $scope.saveFilters = function () {
 
-        if (localStorageService.set('filters', $scope.filters)) {
+        var filters = {};
 
-            utilityService.notify(1, 'Filters were saved.');
+        angular.forEach($scope.filters, function (value, key) {
 
-            $rootScope.changeState('movie.browse');
+            if (value !== 'all' && value !== 0) {
+
+                filters[key] = value;
+
+            }
+
+        });
+
+        if (utilityService.isObjectEmpty(filters)) {
+
+            localStorageService.remove('filters');
 
         } else {
 
-            utilityService.notify(-1, 'Couldn\'t save filters.')
+            if (localStorageService.set('filters', filters)) {
+
+                utilityService.notify(1, 'Filters were saved.');
+
+                $rootScope.changeState('movie.browse');
+
+            } else {
+
+                utilityService.notify(-1, 'Couldn\'t save filters.')
+
+            }
 
         }
+
 
     };
 
     /* --- RUN --- */
 
     $scope.initialize();
-
-    // TODO: Remove this
-    localStorageService.set('filters', { genre: 'sci-fi', minimum_rating: 8 });
 
 }]);

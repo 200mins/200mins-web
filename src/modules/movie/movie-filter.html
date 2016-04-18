@@ -1,1 +1,73 @@
-<div layout="row" layout-align="center start"></div>
+<div layout="column">
+    <md-toolbar style="background-color: white;">
+        <div class="md-toolbar-tools">
+            <md-button style="color: black;" ng-click="$root.changeState('movie.browse')" aria-label="Browse Movies">
+                <md-icon md-svg-src="img/ic_chevron_left_black_24px.svg"></md-icon>
+                <span>Movies&nbsp;&nbsp;</span>
+            </md-button>
+            <span style="color: black;">Filters</span>
+            <span flex></span>
+            <md-button class="md-raised md-primary" ng-click="clearFilters()" aria-label="Clear Filters">
+                <md-icon md-svg-src="img/ic_close_white_24px.svg"></md-icon>
+                <span>Clear&nbsp;&nbsp;</span>
+            </md-button>
+            <md-button class="md-raised md-primary" ng-click="saveFilters()" aria-label="Save Filters">
+                <md-icon md-svg-src="img/ic_check_white_24px.svg"></md-icon>
+                <span>Save&nbsp;&nbsp;</span>
+            </md-button>
+        </div>
+    </md-toolbar>
+</div>
+
+<div layout="row" layout-align="center center" style="padding-top: 10px;">
+
+    <div flex="75">
+        <!-- Genre -->
+        <md-card flex>
+            <md-card-header>
+                <span class="md-title">Genre: <span class="capitalize">{{filters.genre}}</span></span>
+            </md-card-header>
+            <md-card-content>
+                <md-radio-group ng-model="filters.genre">
+                    <md-radio-button value="all" class="md-primary">All</md-radio-button>
+                    <hr>
+                    <section layout="row" layout-wrap layout-align="space-around center">
+                        <md-radio-button flex="20" ng-repeat="genre in genres" value="{{genre.value}}">{{genre.name}}</md-radio-button>
+                    </section>
+                </md-radio-group>
+            </md-card-content>
+        </md-card>
+
+        <div layout="row" flex>
+
+            <!-- Minimum IMDb Rating -->
+            <md-card flex="50">
+                <md-card-header>
+                    <span class="md-title">Minimum IMDb Rating: {{filters.minimum_rating}}</span>
+                </md-card-header>
+                <md-card-content>
+                    <md-slider flex step="1" md-discrete min="0" max="9" ng-model="filters.minimum_rating" aria-label="Minimum IMDb Rating"></md-slider>
+                </md-card-content>
+            </md-card>
+
+            <!-- Video Quality -->
+            <md-card flex="50">
+                <md-card-header>
+                    <span class="md-title">Video Quality: <span class="capitalize">{{filters.quality}}</span></span>
+                </md-card-header>
+                <md-card-content>
+                    <md-radio-group ng-model="filters.quality">
+                        <md-radio-button value="all" class="md-primary">All</md-radio-button>
+                        <hr>
+                        <section layout="row" layout-wrap layout-align="space-around center">
+                            <md-radio-button flex="20" ng-repeat="quality in videoQualities" value="{{quality.value}}">{{quality.name}}</md-radio-button>
+                        </section>
+                    </md-radio-group>
+                </md-card-content>
+            </md-card>
+
+        </div>
+
+    </div>
+
+</div>

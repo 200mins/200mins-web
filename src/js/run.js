@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('200mins-web').run(['CONFIG', 'ENV', '$mdSidenav', '$rootScope', '$state', function (CONFIG, ENV, $mdSidenav, $rootScope, $state) {
+angular.module('200mins-web').run(['CONFIG', 'ENV', '$mdSidenav', '$rootScope', '$state', 'localStorageService', function (CONFIG, ENV, $mdSidenav, $rootScope, $state, localStorageService) {
 
     /* --- MODELS --- */
 
@@ -37,5 +37,13 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', '$mdSidenav', '$rootScope', 
     /* --- RUN --- */
 
     $rootScope.apiURL = CONFIG[ENV]['domain'] + ':' + CONFIG[ENV]['port'] + '/';
+
+    // Show good movies to first-time visitor
+
+    if (!localStorageService.get('filters')) {
+
+        localStorageService.set('filters', { quality: '3D' });
+
+    }
 
 }]);

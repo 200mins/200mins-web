@@ -4,7 +4,8 @@ angular.module('200mins-web').controller('MovieBrowseCtrl', ['$scope', 'localSto
 
     /* --- MODELS --- */
 
-    // $scope.getMoviesParams = { limit: INT(1+), page: INT(1+) };
+    // $scope.filters = { ANY_FILTER };
+    // $scope.getMoviesParams = { limit: INT(1+), page: INT(1+), ANY_FILTER };
     // $scope.isEOC = false;
     // $scope.isNascent = false;
     // $scope.movies = [];
@@ -23,13 +24,23 @@ angular.module('200mins-web').controller('MovieBrowseCtrl', ['$scope', 'localSto
 
         $scope.movies = [];
 
-        // $scope.numMovies = null; // One-time bound
+        // $scope.numMovies = null; // One-time bound, hence not declared or initialized
 
         $scope.selectedMovie = { id: null, reason: null };
 
         var filters = localStorageService.get('filters');
 
-        !!filters ? $scope.getMoviesParams = utilityService.mergeObjects($scope.getMoviesParams, filters, true) : null;
+        if (!!filters) {
+
+            $scope.filters = filters;
+
+            $scope.getMoviesParams = utilityService.mergeObjects($scope.getMoviesParams, filters, true);
+
+        } else {
+
+            $scope.filters = null;
+
+        }
 
         $scope.getMovies();
 

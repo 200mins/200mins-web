@@ -2,8 +2,20 @@
 
 angular.module('200mins-web').service('utilityService', ['$mdToast', function ($mdToast) {
 
+    this.isObjectEmpty = function (obj) {
+
+        for (var key in obj) {
+
+            return false;
+
+        }
+
+        return true;
+
+    };
+
     this.mergeObjects = function (obj1, obj2, overwrite) {
-        
+
         for (var key in obj2) {
 
             overwrite ? obj1[key] = obj2[key] : obj1.hasOwnProperty(key) ? null : obj1[key] = obj2[key];

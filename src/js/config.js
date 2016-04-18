@@ -3,7 +3,8 @@
 angular.module('200mins-web').config(['$mdThemingProvider', '$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function ($mdThemingProvider, $stateProvider, $urlRouterProvider, localStorageServiceProvider) {
 
     $mdThemingProvider.theme('default')
-        .primaryPalette('pink');
+        .primaryPalette('pink')
+        .accentPalette('indigo');
 
     $urlRouterProvider.otherwise('/');
 

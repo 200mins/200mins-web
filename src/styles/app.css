@@ -1,5 +1,9 @@
 /* Global Styles */
 
+.capitalize {
+    text-transform: capitalize;
+}
+
 .last-element {
     margin: 25px 0 !important;
 }
