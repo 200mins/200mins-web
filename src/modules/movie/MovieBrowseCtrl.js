@@ -10,7 +10,7 @@ angular.module('200mins-web').controller('MovieBrowseCtrl', ['$scope', 'localSto
     // $scope.isNascent = false;
     // $scope.movies = [];
     // $scope.numMovies = INT;
-    // $scope.selectedMovie = { id: INT, reason: 'download' || 'info' };
+    // $scope.selectedMovie = { id: INT };
 
     /* --- FUNCTIONS --- */
 
@@ -26,7 +26,7 @@ angular.module('200mins-web').controller('MovieBrowseCtrl', ['$scope', 'localSto
 
         // $scope.numMovies = null; // One-time bound, hence not declared or initialized
 
-        $scope.selectedMovie = { id: null, reason: null };
+        $scope.selectedMovie = { id: null };
 
         var filters = localStorageService.get('filters');
 
@@ -86,15 +86,14 @@ angular.module('200mins-web').controller('MovieBrowseCtrl', ['$scope', 'localSto
 
     $scope.resetSelectedMovie = function () {
 
-        $scope.selectedMovie = { id: null, reason: null };
+        $scope.selectedMovie = { id: null };
 
     };
 
-    $scope.selectMovie = function (id, reason) {
+    $scope.selectMovie = function (id) {
 
         $scope.selectedMovie = {
-            id: id,
-            reason: reason
+            id: id
         };
 
     };

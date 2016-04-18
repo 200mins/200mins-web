@@ -21,15 +21,20 @@
         <!-- Actions -->
         <md-card-actions layout="row">
 
-            <section ng-show="selectedMovie.id !== movie.id" flex>
-                <md-button class="md-icon-button no-margin" aria-label="Download" ng-click="selectMovie(movie.id, 'download')">
+            <section ng-show="selectedMovie.id !== movie.id" layout="row" layout-align="space-between center" flex>
+                <md-button class="md-icon-button no-margin" aria-label="Download" ng-click="selectMovie(movie.id)">
                     <md-icon md-svg-src="img/ic_cloud_download_black_24px.svg"></md-icon>
-                </md-button>
-                <md-button class="md-icon-button no-margin" aria-label="Info." ng-click="selectMovie(movie.id, 'info')">
-                    <md-icon md-svg-src="img/ic_info_black_24px.svg"></md-icon>
                 </md-button>
                 <md-button class="md-icon-button no-margin" aria-label="Open" ng-click="$root.changeState('movie.detail', movie.slug)">
                     <md-icon md-svg-src="img/ic_theaters_black_24px.svg"></md-icon>
+                </md-button>
+                <md-button ng-href="http://www.imdb.com/title/{{movie.imdb_code}}" target="_blank" class="small-button no-margin" aria-label="IMDb Rating">
+                    <img class="png-icon" src="img/imdb.png">
+                    <span>{{movie.rating}}</span>
+                </md-button>
+                <md-button ng-disabled="true" style="color: black !important;" class="small-button no-margin" aria-label="Year">
+                    <md-icon md-svg-src="img/ic_watch_later_black_24px.svg"></md-icon>
+                    <span>{{movie.year}}</span>
                 </md-button>
             </section>
 
@@ -41,22 +46,9 @@
                     </md-button>
                 </section>
 
-                <!-- Reason: Download -->
-                <section ng-show="selectedMovie.reason === 'download'" flex layout="row" layout-align="end center">
+                <section flex layout="row" layout-align="end center">
                     <md-button ng-href="{{torrent.url}}" ng-repeat="torrent in movie.torrents" class="md-primary small-button">
                         <span>{{torrent.quality}}</span>
-                    </md-button>
-                </section>
-
-                <!-- Reason: Info -->
-                <section ng-show="selectedMovie.reason === 'info'" flex layout="row" layout-align="end center">
-                    <md-button class="small-button" aria-label="IMDb Rating">
-                        <img class="png-icon" src="img/imdb.png">
-                        <span>{{movie.rating}}</span>
-                    </md-button>
-                    <md-button class="small-button" aria-label="Year">
-                        <md-icon md-svg-src="img/ic_watch_later_black_24px.svg"></md-icon>
-                        <span>{{movie.year}}</span>
                     </md-button>
                 </section>
 
