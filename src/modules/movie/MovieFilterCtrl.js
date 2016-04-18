@@ -63,8 +63,6 @@ angular.module('200mins-web').controller('MovieFilterCtrl', ['$rootScope', '$sco
 
     };
 
-    // TODO: Don't save null filters
-
     $scope.saveFilters = function () {
 
         var filters = {};

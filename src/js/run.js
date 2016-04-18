@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('200mins-web').run(['CONFIG', 'ENV', '$mdSidenav', '$rootScope', '$state', 'localStorageService', function (CONFIG, ENV, $mdSidenav, $rootScope, $state, localStorageService) {
+angular.module('200mins-web').run(['CONFIG', 'ENV', '$location', '$mdSidenav', '$rootScope', '$state', 'localStorageService', function (CONFIG, ENV, $location, $mdSidenav, $rootScope, $state, localStorageService) {
 
     /* --- MODELS --- */
 
@@ -33,6 +33,12 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', '$mdSidenav', '$rootScope', 
         $mdSidenav('sidenav').open();
 
     };
+
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+
+        window.ga('send', 'pageview', { page: $location.path() });
+
+    });
 
     /* --- RUN --- */
 
