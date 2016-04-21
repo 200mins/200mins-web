@@ -2,34 +2,67 @@
 
 angular.module('200mins-web').service('utilityService', ['$mdToast', function ($mdToast) {
 
-    this.isObjectEmpty = function (obj) {
+        this.cleanMovie = function (movie) {
 
-        for (var key in obj) {
+            var cleanedMovie = {};
 
-            return false;
+            var cleanedMovieKeys = {
+                id: true,
+                imdb_code: true,
+                title: true,
+                year: true,
+                rating: true,
+                runtime: true,
+                genres: true,
+                medium_cover_image: true
+            };
 
-        }
+            for (var key in cleanedMovieKeys) {
 
-        return true;
+                if (movie.hasOwnProperty(key)) {
 
-    };
+                    cleanedMovie[key] = movie[key];
 
-    this.mergeObjects = function (obj1, obj2, overwrite) {
+                } else {
 
-        for (var key in obj2) {
+                    return false;
 
-            overwrite ? obj1[key] = obj2[key] : obj1.hasOwnProperty(key) ? null : obj1[key] = obj2[key];
+                }
 
-        }
+            }
 
-        return obj1;
+            return cleanedMovie;
 
-    };
+        };
 
-    this.notify = function (mode, message) {
+        this.isObjectEmpty = function (obj) {
 
-        $mdToast.showSimple(message);
+            for (var key in obj) {
 
-    };
+                return false;
 
-}]);
+            }
+
+            return true;
+
+        };
+
+        this.mergeObjects = function (obj1, obj2, overwrite) {
+
+            for (var key in obj2) {
+
+                overwrite ? obj1[key] = obj2[key] : obj1.hasOwnProperty(key) ? null : obj1[key] = obj2[key];
+
+            }
+
+            return obj1;
+
+        };
+
+        this.notify = function (mode, message) {
+
+            $mdToast.showSimple(message);
+
+        };
+
+    }]);

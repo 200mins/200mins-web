@@ -1,4 +1,5 @@
 bower_components
 dist
+nbproject
 node_modules
 tmp

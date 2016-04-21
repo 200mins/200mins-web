@@ -1,0 +1,89 @@
+<md-dialog aria-label="Login">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span>Login</span>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="closeLoginDialog()">
+                <md-icon md-svg-src="img/ic_close_white_24px.svg" aria-label="Close Dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content style="width: 400px;">
+        <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
+
+            <md-tab label="As a Member">
+                <md-content class="md-padding">
+
+                    <form name="loginForm" id="login-form">
+
+                        <div layout="column">
+
+                            <md-input-container>
+                                <label>Username</label>
+                                <input required type="text" name="username" ng-model="credentials.username" md-autofocus>
+                                <div ng-messages="loginForm.username.$error" role="alert">
+                                    <span ng-message=required>This is required.</span>
+                                </div>
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>Password</label>
+                                <input required type="password" name="password" ng-model="credentials.password">
+                                <div ng-messages="loginForm.password.$error" role="alert">
+                                    <span ng-message="required">This is required.</span>
+                                </div>
+                            </md-input-container>
+
+                            <md-button type="submit" form="login-form" class="md-block md-primary md-raised" ng-click="login()" ng-disabled="loginForm.$invalid || $root.nascent">Login</md-button>
+
+                        </div>
+
+                    </form>
+
+                </md-content>
+            </md-tab>
+
+            <md-tab label="As a New User">
+                <md-content class="md-padding">
+                    <form name="registrationForm" id="registration-form">
+
+                        <div layout="column">
+
+                            <md-input-container>
+                                <label>Email</label>
+                                <input required type="email" name="email" ng-model="credentials.email" ng-pattern="/^.+@.+\..+$/">
+                                <div ng-messages="registrationForm.email.$error" role="alert">
+                                    <span ng-message-exp="['required', 'pattern']">We need this in case you forget your password.</span>
+                                </div>
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>Username</label>
+                                <input required type="text" name="username" ng-model="credentials.username">
+                                <div ng-messages="registrationForm.username.$error" role="alert">
+                                    <span ng-message=required>This is required.</span>
+                                </div>
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>Password</label>
+                                <input required type="password" name="password" ng-model="credentials.password">
+                                <div ng-messages="registrationForm.password.$error" role="alert">
+                                    <span ng-message="required">This is required.</span>
+                                </div>
+                            </md-input-container>
+
+                            <md-button type="submit" form="registration-form" class="md-block md-primary md-raised" ng-click="register()" ng-disabled="registrationForm.$invalid || $root.nascent">Register</md-button>
+
+                        </div>
+
+                    </form>
+                </md-content>
+            </md-tab>
+
+        </md-tabs>
+    </md-dialog-content>
+
+</md-dialog>

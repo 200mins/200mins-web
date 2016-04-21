@@ -1,105 +1,152 @@
 'use strict';
 
-angular.module('200mins-web').controller('MovieBrowseCtrl', ['$scope', 'localStorageService', 'movieService', 'utilityService', function ($scope, localStorageService, movieService, utilityService) {
+angular.module('200mins-web').controller('MovieBrowseCtrl', ['$rootScope', '$scope', '$window', 'activityService', 'localStorageService', 'movieService', 'utilityService', function ($rootScope, $scope, $window, activityService, localStorageService, movieService, utilityService) {
 
-    /* --- MODELS --- */
+        /* --- MODELS --- */
 
-    // $scope.filters = { ANY_FILTER };
-    // $scope.getMoviesParams = { limit: INT(1+), page: INT(1+), ANY_FILTER };
-    // $scope.isEOC = false;
-    // $scope.isNascent = false;
-    // $scope.movies = [];
-    // $scope.numMovies = INT;
-    // $scope.selectedMovie = { id: INT };
+        // $scope.filters;
+        // $scope.getMoviesParams;
+        // $scope.isEOC;
+        // $scope.isNascent;
+        // $scope.movies;
+        // $scope.numMovies;
+        // $scope.selectedMovie;
 
-    /* --- FUNCTIONS --- */
+        /* --- FUNCTIONS --- */
 
-    $scope.initialize = function () {
+        $scope.initialize = function () {
 
-        $scope.getMoviesParams = { limit: 20, page: 1 };
+            $scope.getMoviesParams = {limit: 20, page: 1, sort_by: 'year'};
 
-        $scope.isEOC = false;
+            $scope.isEOC = false;
 
-        $scope.isNascent = false;
+            $scope.isNascent = false;
 
-        $scope.movies = [];
+            $scope.movies = [];
 
-        // $scope.numMovies = null; // One-time bound, hence not declared or initialized
+            // $scope.numMovies = null; // One-time bound, hence not declared or initialized
 
-        $scope.selectedMovie = { id: null };
+            $scope.selectedMovie = {id: null};
 
-        var filters = localStorageService.get('filters');
+            $scope.filters = localStorageService.get('filters');
 
-        if (!!filters) {
+            if ($scope.filters !== null) {
 
-            $scope.filters = filters;
+                $scope.getMoviesParams = utilityService.mergeObjects($scope.getMoviesParams, $scope.filters, true);
 
-            $scope.getMoviesParams = utilityService.mergeObjects($scope.getMoviesParams, filters, true);
+            }
 
-        } else {
+            $scope.getMovies();
 
-            $scope.filters = null;
+        };
 
-        }
+        $scope.download = function (movie, torrent) {
 
-        $scope.getMovies();
+            $rootScope.initializeUser().then(function () {
 
-    };
+                var data = {
+                    movie: utilityService.cleanMovie(movie),
+                    quality: torrent.quality
+                };
 
-    $scope.getMovies = function () {
+                activityService.download(data).then(function (response) {
 
-        $scope.isNascent = true;
+                    if (typeof response === 'undefined') {
 
-        movieService.getMovies($scope.getMoviesParams).then(function (response) {
+                        utilityService.notify(-1, 'Couldn\'t reach 200mins.');
 
-            if (response && response.status === 200) {
+                    } else {
 
-                $scope.movies = $scope.movies.concat(response.data.movies);
+                        switch (response.status) {
 
-                $scope.numMovies = response.data.movie_count;
+                            case 200:
 
-                if (response.data.movies.length === $scope.getMoviesParams.limit) {
+                                $window.open(torrent.url, '_self');
 
-                    ++$scope.getMoviesParams.page;
+                                break;
+
+                            default:
+
+                                utilityService.notify(-1, 'Service is down.');
+
+                        }
+
+                    }
+
+                });
+
+            }, function () {
+
+                $rootScope.showLoginDialog();
+
+            });
+
+        };
+
+        $scope.getMovies = function () {
+
+            $scope.isNascent = true;
+
+            movieService.listMovies($scope.getMoviesParams).then(function (response) {
+
+                if (response && response.status === 200) {
+
+                    $scope.numMovies = response.data.movie_count;
+
+                    if (response.data.movie_count > 0) {
+
+                        $scope.movies = $scope.movies.concat(response.data.movies);
+
+                        if (response.data.movies.length === $scope.getMoviesParams.limit) {
+
+                            ++$scope.getMoviesParams.page;
+
+                        } else {
+
+                            utilityService.notify(0, 'That\'s all we got.');
+
+                            $scope.isEOC = true;
+
+                        }
+
+                    } else {
+
+                        utilityService.notify(0, 'That\'s all we got.');
+
+                        $scope.isEOC = true;
+
+                    }
 
                 } else {
 
-                    utilityService.notify(0, 'That\'s all we got.');
+                    utilityService.notify(-1, 'Couldn\'t get movies.');
 
                     $scope.isEOC = true;
 
                 }
 
-            } else {
+                $scope.isNascent = false;
 
-                utilityService.notify(-1, 'Couldn\'t get movies.');
+            });
 
-                $scope.isEOC = true;
-
-            }
-
-            $scope.isNascent = false;
-
-        });
-
-    };
-
-    $scope.resetSelectedMovie = function () {
-
-        $scope.selectedMovie = { id: null };
-
-    };
-
-    $scope.selectMovie = function (id) {
-
-        $scope.selectedMovie = {
-            id: id
         };
 
-    };
+        $scope.resetSelectedMovie = function () {
 
-    /* --- RUN --- */
+            $scope.selectedMovie = {id: null};
 
-    $scope.initialize();
+        };
 
-}]);
+        $scope.selectMovie = function (id) {
+
+            $scope.selectedMovie = {
+                id: id
+            };
+
+        };
+
+        /* --- RUN --- */
+
+        $scope.initialize();
+
+    }]);
