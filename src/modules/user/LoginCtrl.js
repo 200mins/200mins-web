@@ -21,38 +21,6 @@ angular.module('200mins-web').controller('LoginCtrl', ['$mdDialog', '$rootScope'
 
         };
 
-        $scope.checkUsername = function () {
-
-            var params = {username: $scope.credentials.username};
-
-            userService.checkUsername(params).then(function (response) {
-
-                if (typeof response === 'undefined') {
-
-                    utilityService.notify(-1, 'Couldn\'t reach 200mins.');
-
-                } else {
-
-                    switch (response.status) {
-
-                        case 200:
-
-                            $scope.isRegistrationAllowed = response.data.available;
-
-                            break;
-
-                        default:
-
-                            utilityService.notify(-1, 'Service is down.');
-
-                    }
-
-                }
-
-            });
-
-        };
-
         $scope.closeLoginDialog = function () {
 
             $mdDialog.cancel();

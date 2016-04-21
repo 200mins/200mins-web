@@ -38,7 +38,6 @@ angular.module('200mins-web').constant('ENDPOINTS', {
 
     // userService
 
-    checkUsername: 'user/checkusername',
     login: 'user/login',
     register: 'user/register'
 
