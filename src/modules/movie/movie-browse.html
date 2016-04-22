@@ -44,7 +44,7 @@
                 </section>
 
                 <section flex layout="row" layout-align="end center">
-                    <md-button ng-repeat="torrent in movie.torrents" class="md-primary small-button" ng-click="download(movie, torrent)">
+                    <md-button ng-repeat="torrent in movie.torrents" class="md-primary small-button" ng-click="download($event, movie, torrent)">
                         <span>{{torrent.quality}}</span>
                     </md-button>
                 </section>

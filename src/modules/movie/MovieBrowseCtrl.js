@@ -40,7 +40,7 @@ angular.module('200mins-web').controller('MovieBrowseCtrl', ['$rootScope', '$sco
 
         };
 
-        $scope.download = function (movie, torrent) {
+        $scope.download = function (e, movie, torrent) {
 
             $rootScope.initializeUser().then(function () {
 
@@ -77,7 +77,7 @@ angular.module('200mins-web').controller('MovieBrowseCtrl', ['$rootScope', '$sco
 
             }, function () {
 
-                $rootScope.showLoginDialog();
+                $rootScope.showLoginDialog(e);
 
             });
 

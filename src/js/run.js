@@ -58,12 +58,13 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
 
         };
 
-        $rootScope.showLoginDialog = function () {
+        $rootScope.showLoginDialog = function (e) {
 
             $mdDialog.show({
                 controller: 'LoginCtrl',
                 templateUrl: 'modules/user/login-dialog.html',
                 parent: angular.element(document.body),
+                targetEvent: e,
                 clickOutsideToClose: true,
                 openFrom: '#login-dialog-spawn',
                 closeTo: '#login-dialog-spawn'
