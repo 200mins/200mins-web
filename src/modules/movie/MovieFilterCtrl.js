@@ -5,9 +5,9 @@ angular.module('200mins-web').controller('MovieFilterCtrl', ['$rootScope', '$sco
         /* --- MODELS --- */
 
         // $scope.filter = {
-        //     genre: ANY_GENRE,
-        //     minimum_rating: INT(0-9),
-        //     quality: ANY_QUALITY
+        //     genre,
+        //     minimum_rating,
+        //     quality
         // };
 
         $scope.genres = [
@@ -49,7 +49,11 @@ angular.module('200mins-web').controller('MovieFilterCtrl', ['$rootScope', '$sco
 
             var filters = localStorageService.get('filters');
 
-            filters === null ? $scope.filters = utilityService.mergeObjects($scope.filters, filters, true) : null;
+            if (filters !== null) {
+
+                $scope.filters = utilityService.mergeObjects($scope.filters, filters, true);
+
+            }
 
         };
 
@@ -79,18 +83,11 @@ angular.module('200mins-web').controller('MovieFilterCtrl', ['$rootScope', '$sco
 
             if (utilityService.isObjectEmpty(filters)) {
 
-                if (localStorageService.remove('filters')) {
+                localStorageService.remove('filters');
 
-                    utilityService.notify(1, 'Filters were saved.');
+                utilityService.notify(1, 'Filters were saved.');
 
-                    $rootScope.changeState('movie.browse');
-
-                } else {
-
-                    utilityService.notify(-1, 'Couldn\'t save filters.');
-
-                }
-
+                $rootScope.changeState('movie.browse');
 
             } else {
 
