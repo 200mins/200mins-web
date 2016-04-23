@@ -32,7 +32,7 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
 
         };
 
-        $rootScope.logout = function () {
+        $rootScope.logout = function (isSilent) {
 
             localStorageService.remove('token');
 
@@ -42,7 +42,11 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
 
             $rootScope.initializeUser();
 
-            utilityService.notify(1, 'Logging you out...');
+            if (!isSilent) {
+
+                utilityService.notify(1, 'Logging you out...');
+
+            }
 
         };
 

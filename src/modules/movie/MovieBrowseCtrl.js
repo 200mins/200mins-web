@@ -71,6 +71,14 @@ angular.module('200mins-web').controller('MovieBrowseCtrl', ['$rootScope', '$sco
 
                                 break;
 
+                            case 401:
+
+                                $rootScope.logout(true);
+
+                                utilityService.notify(-1, response.data);
+
+                                break;
+
                             default:
 
                                 utilityService.notify(-1, 'Service is down.');
