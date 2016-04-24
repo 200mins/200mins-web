@@ -26,7 +26,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
             // $scope.numMovies = null; // One-time bound, hence not declared or initialized
 
-            $scope.selectedMovie = {id: null};
+            $scope.selectedMovie = {id: null, intention: null};
 
             $scope.filters = localStorageService.get('filters');
 
@@ -147,15 +147,75 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
         $scope.resetSelectedMovie = function () {
 
-            $scope.selectedMovie = {id: null};
+            $scope.selectedMovie = {id: null, intention: null};
 
         };
 
-        $scope.selectMovie = function (id) {
+        $scope.selectMovie = function (id, intention) {
 
             $scope.selectedMovie = {
-                id: id
+                id: id,
+                intention: intention
             };
+
+        };
+
+        $scope.stream = function (e, movie, torrent) {
+
+            $rootScope.initializeUser().then(function () {
+
+                var data = {
+                    movie: utilityService.cleanMovie(movie),
+                    quality: torrent.quality
+                };
+
+                activityService.stream(data).then(function (response) {
+
+                    if (typeof response === 'undefined') {
+
+                        utilityService.notify(-1, 'Couldn\'t reach 200mins.');
+
+                    } else {
+
+                        switch (response.status) {
+
+                            case 200:
+
+                                var magnetURL = 'magnet:?xt=urn:btih:' + torrent.hash + '&dn=' + encodeURIComponent(movie.title_long) + '&tr=udp://tracker.openbittorrent.com:80&tr=udp://torrent.gresille.org:80/announce';
+
+                                $window.open(magnetURL, '_self');
+
+                                break;
+
+                            case 403:
+
+                                utilityService.notify(-1, response.data);
+
+                                break;
+
+                            case 401:
+
+                                $rootScope.logout(true);
+
+                                utilityService.notify(-1, response.data);
+
+                                break;
+
+                            default:
+
+                                utilityService.notify(-1, 'Service is down.');
+
+                        }
+
+                    }
+
+                });
+
+            }, function () {
+
+                $rootScope.showLoginDialog(e);
+
+            });
 
         };
 

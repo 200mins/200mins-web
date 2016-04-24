@@ -21,14 +21,17 @@
         <md-card-actions layout="row">
 
             <section ng-show="selectedMovie.id !== movie.id" layout="row" layout-align="space-between center" flex>
-                <md-button class="md-icon-button no-margin" aria-label="Download" ng-click="selectMovie(movie.id)">
-                    <md-icon md-svg-src="img/ic_cloud_download_black_24px.svg"></md-icon>
-                </md-button>
                 <md-button ng-href="http://www.imdb.com/title/{{movie.imdb_code}}/" target="_blank" class="small-button no-margin" aria-label="IMDb Rating">
                     <img class="png-icon" src="img/imdb.png">&nbsp;<span>{{movie.rating}}</span>
                 </md-button>
                 <md-button ng-disabled="true" style="color: black !important;" class="small-button no-margin" aria-label="Year">
                     <md-icon md-svg-src="img/ic_date_range_black_24px.svg"></md-icon>&nbsp;<span>{{movie.year}}</span>
+                </md-button>
+                <md-button class="md-icon-button no-margin" aria-label="Download" ng-click="selectMovie(movie.id, 'download')">
+                    <md-icon md-svg-src="img/ic_cloud_download_black_24px.svg"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button no-margin" aria-label="Play" ng-click="selectMovie(movie.id, 'stream')">
+                    <md-icon md-svg-src="img/ic_play_arrow_black_24px.svg"></md-icon>
                 </md-button>
             </section>
 
@@ -40,8 +43,14 @@
                     </md-button>
                 </section>
 
-                <section flex layout="row" layout-align="end center">
+                <section flex layout="row" layout-align="end center" ng-show="selectedMovie.intention === 'download'">
                     <md-button ng-repeat="torrent in movie.torrents" class="md-primary small-button" ng-click="download($event, movie, torrent)">
+                        <span>{{torrent.quality}}</span>
+                    </md-button>
+                </section>
+
+                <section flex layout="row" layout-align="end center" ng-show="selectedMovie.intention === 'stream'">
+                    <md-button ng-repeat="torrent in movie.torrents" class="md-primary small-button" ng-click="stream($event, movie, torrent)">
                         <span>{{torrent.quality}}</span>
                     </md-button>
                 </section>
