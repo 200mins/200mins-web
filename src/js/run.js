@@ -44,7 +44,7 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
 
             if (!isSilent) {
 
-                utilityService.notify(1, 'Logging you out...');
+                utilityService.notify('Logging you out...');
 
             }
 
@@ -97,7 +97,7 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
 
                 if (!localStorageService.set('version', VERSION)) {
 
-                    utilityService.notify(-1, 'Couldn\'t initialize app properly.');
+                    utilityService.notify('Couldn\'t initialize app properly.');
 
                 }
 
@@ -133,7 +133,7 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
 
                         $rootScope.isUserInitialized = true;
 
-                        utilityService.notify(1, 'Hi ' + user.username + '!');
+                        utilityService.notify('Hi ' + user.username + '!');
 
                         resolve();
 

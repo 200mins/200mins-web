@@ -5,6 +5,7 @@ angular.module('200mins-web').constant('ENDPOINTS', {
     // activityService
 
     download: 'activity/download',
+    stream: 'activity/stream',
     like: 'activity/like',
     unlike: 'activity/unlike',
     markWatch: 'activity/markwatch',

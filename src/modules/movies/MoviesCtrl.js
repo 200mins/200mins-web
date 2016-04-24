@@ -53,7 +53,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
                     if (typeof response === 'undefined') {
 
-                        utilityService.notify(-1, 'Couldn\'t reach 200mins.');
+                        utilityService.notify('Couldn\'t reach 200mins.');
 
                     } else {
 
@@ -67,7 +67,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
                             case 403:
 
-                                utilityService.notify(-1, response.data);
+                                utilityService.notify(response.data);
 
                                 break;
 
@@ -75,13 +75,13 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
                                 $rootScope.logout(true);
 
-                                utilityService.notify(-1, response.data);
+                                utilityService.notify(response.data);
 
                                 break;
 
                             default:
 
-                                utilityService.notify(-1, 'Service is down.');
+                                utilityService.notify('Service is down.');
 
                         }
 
@@ -117,7 +117,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
                         } else {
 
-                            utilityService.notify(0, 'That\'s all we got.');
+                            utilityService.notify('That\'s all we got.');
 
                             $scope.isEOC = true;
 
@@ -125,7 +125,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
                     } else {
 
-                        utilityService.notify(0, 'That\'s all we got.');
+                        utilityService.notify('That\'s all we got.');
 
                         $scope.isEOC = true;
 
@@ -133,7 +133,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
                 } else {
 
-                    utilityService.notify(-1, 'Couldn\'t get movies.');
+                    utilityService.notify('Couldn\'t get movies.');
 
                     $scope.isEOC = true;
 
@@ -173,7 +173,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
                     if (typeof response === 'undefined') {
 
-                        utilityService.notify(-1, 'Couldn\'t reach 200mins.');
+                        utilityService.notify('Couldn\'t reach 200mins.');
 
                     } else {
 
@@ -189,7 +189,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
                             case 403:
 
-                                utilityService.notify(-1, response.data);
+                                utilityService.notify(response.data);
 
                                 break;
 
@@ -197,13 +197,13 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
                                 $rootScope.logout(true);
 
-                                utilityService.notify(-1, response.data);
+                                utilityService.notify(response.data);
 
                                 break;
 
                             default:
 
-                                utilityService.notify(-1, 'Service is down.');
+                                utilityService.notify('Service is down.');
 
                         }
 

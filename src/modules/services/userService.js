@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('200mins-web').service('userService', ['ENDPOINTS', 'ENV', '$http', '$rootScope', function (ENDPOINTS, ENV, $http, $rootScope) {
+angular.module('200mins-web').service('userService', ['ENDPOINTS', 'ENV', '$http', '$rootScope', 'localStorageService', 'utilityService', function (ENDPOINTS, ENV, $http, $rootScope, localStorageService, utilityService) {
 
         this.checkUsername = function (params) {
 
@@ -81,6 +81,32 @@ angular.module('200mins-web').service('userService', ['ENDPOINTS', 'ENV', '$http
                 return err;
 
             });
+
+        };
+
+        this.updateKarma = function (delta) {
+            
+            var user = localStorageService.get('user');
+
+            if (user === null) {
+
+                utilityService.notify('Couldn\'t update your karma.');
+
+            } else {
+
+                user.karma += delta;
+
+                if (localStorageService.set('user', user)) {
+
+                    utilityService.notify('Your karma: ' + user.karma);
+
+                } else {
+
+                    utilityService.notify('Couldn\'t update your karma.');
+
+                }
+
+            }
 
         };
 

@@ -61,7 +61,7 @@ angular.module('200mins-web').controller('FiltersCtrl', ['$rootScope', '$scope',
 
             localStorageService.remove('filters');
 
-            utilityService.notify(1, 'Filters were cleared.');
+            utilityService.notify('Filters were cleared.');
 
             $rootScope.changeState('movies');
 
@@ -85,7 +85,7 @@ angular.module('200mins-web').controller('FiltersCtrl', ['$rootScope', '$scope',
 
                 localStorageService.remove('filters');
 
-                utilityService.notify(1, 'Filters were saved.');
+                utilityService.notify('Filters were saved.');
 
                 $rootScope.changeState('movies');
 
@@ -93,13 +93,13 @@ angular.module('200mins-web').controller('FiltersCtrl', ['$rootScope', '$scope',
 
                 if (localStorageService.set('filters', filters)) {
 
-                    utilityService.notify(1, 'Filters were saved.');
+                    utilityService.notify('Filters were saved.');
 
                     $rootScope.changeState('movies');
 
                 } else {
 
-                    utilityService.notify(-1, 'Couldn\'t save filters.');
+                    utilityService.notify('Couldn\'t save filters.');
 
                 }
 

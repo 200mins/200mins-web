@@ -59,7 +59,7 @@ angular.module('200mins-web').service('utilityService', ['$mdToast', function ($
 
         };
 
-        this.notify = function (mode, message) {
+        this.notify = function (message) {
 
             $mdToast.showSimple(message);
 

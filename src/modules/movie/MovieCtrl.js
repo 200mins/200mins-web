@@ -33,7 +33,7 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
                     case 404:
 
-                        utilityService.notify(-1, 'Movie not found.');
+                        utilityService.notify('Movie not found.');
 
                         $rootScope.changeState('movies');
 
@@ -41,7 +41,7 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
                     default:
 
-                        utilityService.notify(-1, 'Service is down.');
+                        utilityService.notify('Service is down.');
 
                 }
 
