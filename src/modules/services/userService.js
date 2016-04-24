@@ -85,12 +85,14 @@ angular.module('200mins-web').service('userService', ['ENDPOINTS', 'ENV', '$http
         };
 
         this.updateKarma = function (delta) {
-            
+
             var user = localStorageService.get('user');
 
             if (user === null) {
 
                 utilityService.notify('Couldn\'t update your karma.');
+
+                return;
 
             } else {
 
@@ -98,11 +100,13 @@ angular.module('200mins-web').service('userService', ['ENDPOINTS', 'ENV', '$http
 
                 if (localStorageService.set('user', user)) {
 
-                    utilityService.notify('Your karma: ' + user.karma);
+                    return;
 
                 } else {
 
                     utilityService.notify('Couldn\'t update your karma.');
+
+                    return;
 
                 }
 
