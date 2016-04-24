@@ -30,4 +30,32 @@ angular.module('200mins-web').service('movieService', ['ENDPOINTS', 'ENV', '$htt
 
         };
 
+        this.movieDetails = function (params) {
+
+            var options = {params: params};
+
+            return $http.get($rootScope.apiURL + ENDPOINTS.movieDetails, options).then(function (response) {
+
+                if (ENV !== 'PROD') {
+
+                    console.info('movieDetails: ', response);
+
+                }
+
+                return response;
+
+            }, function (err) {
+
+                if (ENV !== 'PROD') {
+
+                    console.warn('movieDetails: ', err);
+
+                }
+
+                return err;
+
+            });
+
+        };
+
     }]);

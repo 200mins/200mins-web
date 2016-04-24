@@ -12,28 +12,28 @@ angular.module('200mins-web').config(['$mdThemingProvider', '$stateProvider', '$
 
         $stateProvider
 
+                .state('filters', {
+                    controller: 'FiltersCtrl',
+                    templateUrl: 'modules/filters/filters.html',
+                    url: '/filters'
+                })
+
                 .state('home', {
                     controller: 'HomeCtrl',
-                    templateUrl: 'modules/common/home.html',
+                    templateUrl: 'modules/home/home.html',
                     url: '/'
                 })
 
                 .state('movie', {
-                    abstract: true,
-                    template: '<ui-view/>',
+                    controller: 'MovieCtrl',
+                    templateUrl: 'modules/movie/movie.html',
+                    url: '/movie/:id'
+                })
+
+                .state('movies', {
+                    controller: 'MoviesCtrl',
+                    templateUrl: 'modules/movies/movies.html',
                     url: '/movies'
-                })
-
-                .state('movie.browse', {
-                    controller: 'MovieBrowseCtrl',
-                    templateUrl: 'modules/movie/movie-browse.html',
-                    url: '/'
-                })
-
-                .state('movie.filter', {
-                    controller: 'MovieFilterCtrl',
-                    templateUrl: 'modules/movie/movie-filter.html',
-                    url: '/filters'
                 });
 
     }]);

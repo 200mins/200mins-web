@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('200mins-web').controller('MovieFilterCtrl', ['$rootScope', '$scope', 'localStorageService', 'utilityService', function ($rootScope, $scope, localStorageService, utilityService) {
+angular.module('200mins-web').controller('FiltersCtrl', ['$rootScope', '$scope', 'localStorageService', 'utilityService', function ($rootScope, $scope, localStorageService, utilityService) {
 
         /* --- MODELS --- */
 
@@ -63,7 +63,7 @@ angular.module('200mins-web').controller('MovieFilterCtrl', ['$rootScope', '$sco
 
             utilityService.notify(1, 'Filters were cleared.');
 
-            $rootScope.changeState('movie.browse');
+            $rootScope.changeState('movies');
 
         };
 
@@ -87,7 +87,7 @@ angular.module('200mins-web').controller('MovieFilterCtrl', ['$rootScope', '$sco
 
                 utilityService.notify(1, 'Filters were saved.');
 
-                $rootScope.changeState('movie.browse');
+                $rootScope.changeState('movies');
 
             } else {
 
@@ -95,7 +95,7 @@ angular.module('200mins-web').controller('MovieFilterCtrl', ['$rootScope', '$sco
 
                     utilityService.notify(1, 'Filters were saved.');
 
-                    $rootScope.changeState('movie.browse');
+                    $rootScope.changeState('movies');
 
                 } else {
 

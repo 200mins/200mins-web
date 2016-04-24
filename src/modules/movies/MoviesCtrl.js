@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('200mins-web').controller('MovieBrowseCtrl', ['$rootScope', '$scope', '$window', 'activityService', 'localStorageService', 'movieService', 'utilityService', function ($rootScope, $scope, $window, activityService, localStorageService, movieService, utilityService) {
+angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', '$window', 'activityService', 'localStorageService', 'movieService', 'utilityService', function ($rootScope, $scope, $window, activityService, localStorageService, movieService, utilityService) {
 
         /* --- MODELS --- */
 

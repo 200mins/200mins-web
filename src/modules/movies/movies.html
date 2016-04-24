@@ -3,7 +3,7 @@
         <div class="md-toolbar-tools">
             <span style="color: black;" ng-show="numMovies >= 0">Browsing {{::numMovies}} movies</span>
             <span flex></span>
-            <md-button class="md-raised md-primary" ng-click="$root.changeState('movie.filter')">
+            <md-button class="md-raised md-primary" ng-click="$root.changeState('filters')">
                 <md-icon md-svg-src="img/ic_filter_list_white_24px.svg"></md-icon>&nbsp;<span>Filters: <span ng-hide="filters === null">ON</span><span ng-hide="filters !== null">OFF</span>&nbsp;</span>
             </md-button>
         </div>
@@ -15,7 +15,7 @@
     <md-card class="movie-card" ng-repeat="movie in movies">
 
         <!-- Poster -->
-        <img ng-src="{{movie.medium_cover_image}}" class="md-card-image" alt="{{movie.title}}">
+        <img style="cursor: pointer;" ng-src="{{movie.medium_cover_image}}" class="md-card-image" alt="{{movie.title}}" ng-click="$root.changeState('movie', {id: movie.id})">
 
         <!-- Actions -->
         <md-card-actions layout="row">
@@ -23,9 +23,6 @@
             <section ng-show="selectedMovie.id !== movie.id" layout="row" layout-align="space-between center" flex>
                 <md-button class="md-icon-button no-margin" aria-label="Download" ng-click="selectMovie(movie.id)">
                     <md-icon md-svg-src="img/ic_cloud_download_black_24px.svg"></md-icon>
-                </md-button>
-                <md-button class="md-icon-button no-margin" aria-label="Open" ng-click="$root.changeState('movie.detail', movie.id)">
-                    <md-icon md-svg-src="img/ic_theaters_black_24px.svg"></md-icon>
                 </md-button>
                 <md-button ng-href="http://www.imdb.com/title/{{movie.imdb_code}}/" target="_blank" class="small-button no-margin" aria-label="IMDb Rating">
                     <img class="png-icon" src="img/imdb.png">&nbsp;<span>{{movie.rating}}</span>

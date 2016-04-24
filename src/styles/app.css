@@ -25,6 +25,10 @@
     min-width: 30%;
 }
 
+.translucent-card {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
 /* Home */
 
 .hero {
@@ -49,7 +53,7 @@
     padding: 6px 18px;
 }
 
-/* Movies */
+/* Movie - Browse */
 
 .movie-card {
     width: 250px;
@@ -57,4 +61,21 @@
 
 .movie-card .md-card-image {
     height: 375px;
+}
+
+/* Movie - Detail */
+
+.actor-card {
+    width: 300px;
+}
+
+.image-bg-container {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.md-chips {
+    box-shadow: none !important;
 }
