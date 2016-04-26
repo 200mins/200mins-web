@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', '$window', 'activityService', 'localStorageService', 'movieService', 'utilityService', function ($rootScope, $scope, $window, activityService, localStorageService, movieService, utilityService) {
+angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 'activityService', 'localStorageService', 'movieService', 'utilityService', function ($rootScope, $scope, activityService, localStorageService, movieService, utilityService) {
 
         /* --- MODELS --- */
 
@@ -61,7 +61,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
                             case 200:
 
-                                $window.open(torrent.url, '_self');
+                                $rootScope.changeURL(torrent.url, false);
 
                                 break;
 
@@ -183,7 +183,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
                                 var magnetURL = 'magnet:?xt=urn:btih:' + torrent.hash + '&dn=' + encodeURIComponent(movie.title_long) + '&tr=udp://tracker.openbittorrent.com:80&tr=udp://torrent.gresille.org:80/announce';
 
-                                $window.open(magnetURL, '_self');
+                                $rootScope.changeURL(magnetURL, false);
 
                                 break;
 

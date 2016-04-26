@@ -4,9 +4,9 @@ angular.module('200mins-web').service('userService', ['ENDPOINTS', 'ENV', '$http
 
         this.checkUsername = function (params) {
 
-            var options = {params: params};
+            var config = {params: params};
 
-            return $http.get($rootScope.apiURL + ENDPOINTS.checkUsername, options).then(function (response) {
+            return $http.get($rootScope.apiURL + ENDPOINTS.checkUsername, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
@@ -32,9 +32,9 @@ angular.module('200mins-web').service('userService', ['ENDPOINTS', 'ENV', '$http
 
         this.login = function (params) {
 
-            var options = {params: params};
+            var config = {params: params};
 
-            return $http.get($rootScope.apiURL + ENDPOINTS.login, options).then(function (response) {
+            return $http.get($rootScope.apiURL + ENDPOINTS.login, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 

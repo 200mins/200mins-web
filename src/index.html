@@ -18,7 +18,7 @@
 
     <body layout="row" style="background-image: url('img/bg.gif');">
 
-    <md-sidenav md-component-id="sidenav" class="md-sidenav-left">
+    <md-sidenav md-component-id="sidenav" class="md-sidenav-left" layout="column">
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <a ui-sref="home">200mins</a>
@@ -28,6 +28,8 @@
                 </md-button>
             </div>
         </md-toolbar>
+        <span flex></span>
+        <small style="color: grey;" layout-padding>This site is in ACTIVE DEVELOPMENT. Your account MAY BE DELETED without notice. Do not fret; simply register again. You'll know this won't happen when this message is removed. We promise good things to you. Cheers!</small>
     </md-sidenav>
 
     <div layout="column" layout-fill>

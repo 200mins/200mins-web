@@ -13,29 +13,12 @@ angular.module('200mins-web').constant('ENDPOINTS', {
     markWatched: 'activity/markwatched',
     unmarkWatched: 'activity/unmarkwatched',
 
-    // collectionService
-
-    createCollection: 'collection/create',
-    deleteCollection: 'collection/delete',
-    updateCollection: 'collection/update',
-
-    // franchiseService
-
-    createFranchise: 'franchise/create',
-    deleteFranchise: 'franchise/delete',
-    updateFranchise: 'franchise/update',
-
     // movieService
 
+    getStatus: 'movie/status',
     listMovies: 'proxy/listmovies',
     movieDetails: 'proxy/moviedetails',
     movieSuggestions: 'proxy/moviesuggestions',
-
-    // reviewService
-
-    createReview: 'review/create',
-    deleteReview: 'review/delete',
-    updateReview: 'review/update',
 
     // userService
 

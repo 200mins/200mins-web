@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$mdDialog', '$mdSidenav', '$q', '$rootScope', '$state', 'localStorageService', 'utilityService', function (CONFIG, ENV, VERSION, $location, $mdDialog, $mdSidenav, $q, $rootScope, $state, localStorageService, utilityService) {
+angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$mdDialog', '$mdSidenav', '$q', '$rootScope', '$state', '$window', 'localStorageService', 'utilityService', function (CONFIG, ENV, VERSION, $location, $mdDialog, $mdSidenav, $q, $rootScope, $state, $window, localStorageService, utilityService) {
 
         /* --- MODELS --- */
 
@@ -23,6 +23,14 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
                 $state.go(state, params);
 
             }
+
+        };
+
+        $rootScope.changeURL = function (url, newTab) {
+
+            newTab = newTab ? '_blank' : '_self';
+
+            $window.open(url, newTab);
 
         };
 

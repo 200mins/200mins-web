@@ -21,8 +21,8 @@
         <md-card-actions layout="row">
 
             <section ng-show="selectedMovie.id !== movie.id" layout="row" layout-align="space-between center" flex>
-                <md-button ng-href="http://www.imdb.com/title/{{movie.imdb_code}}/" target="_blank" class="small-button no-margin" aria-label="IMDb Rating">
-                    <img class="png-icon" src="img/imdb.png">&nbsp;<span>{{movie.rating | number : 1}}</span>
+                <md-button ng-click="$root.changeURL('http://www.imdb.com/title/' + movie.imdb_code + '/', true)" class="small-button no-margin" aria-label="IMDb Rating">
+                    <img class="png-icon" src="img/imdb.png">&nbsp;<span>{{movie.rating| number : 1}}</span>
                 </md-button>
                 <md-button ng-disabled="true" style="color: black !important;" class="small-button no-margin" aria-label="Year">
                     <md-icon md-svg-src="img/ic_date_range_black_24px.svg"></md-icon>&nbsp;<span>{{movie.year}}</span>

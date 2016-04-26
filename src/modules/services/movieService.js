@@ -2,11 +2,42 @@
 
 angular.module('200mins-web').service('movieService', ['ENDPOINTS', 'ENV', '$http', '$rootScope', function (ENDPOINTS, ENV, $http, $rootScope) {
 
+        this.getStatus = function (params) {
+
+            var config = {
+                headers: {'Authorization': $rootScope.token},
+                params: params
+            };
+
+            return $http.get($rootScope.apiURL + ENDPOINTS.getStatus, config).then(function (response) {
+
+                if (ENV !== 'PROD') {
+
+                    console.info('getStatus: ', response);
+
+                }
+
+                return response;
+
+            }, function (err) {
+
+                if (ENV !== 'PROD') {
+
+                    console.warn('getStatus: ', err);
+
+                }
+
+                return err;
+
+            });
+
+        };
+
         this.listMovies = function (params) {
 
-            var options = {params: params};
+            var config = {params: params};
 
-            return $http.get($rootScope.apiURL + ENDPOINTS.listMovies, options).then(function (response) {
+            return $http.get($rootScope.apiURL + ENDPOINTS.listMovies, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
@@ -32,9 +63,9 @@ angular.module('200mins-web').service('movieService', ['ENDPOINTS', 'ENV', '$htt
 
         this.movieDetails = function (params) {
 
-            var options = {params: params};
+            var config = {params: params};
 
-            return $http.get($rootScope.apiURL + ENDPOINTS.movieDetails, options).then(function (response) {
+            return $http.get($rootScope.apiURL + ENDPOINTS.movieDetails, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 

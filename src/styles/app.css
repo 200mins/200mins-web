@@ -66,6 +66,7 @@
 /* Movie - Detail */
 
 .actor-card {
+    cursor: pointer;
     width: 300px;
 }
 
