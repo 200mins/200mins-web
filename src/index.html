@@ -18,6 +18,17 @@
 
     <body layout="row" style="background-image: url('img/bg.gif');">
 
+        <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1648444362075991";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
     <md-sidenav md-component-id="sidenav" class="md-sidenav-left" layout="column">
         <md-toolbar>
             <div class="md-toolbar-tools">
@@ -28,7 +39,14 @@
                 </md-button>
             </div>
         </md-toolbar>
+        <md-content>
+            <div ng-include="'components/sidenav.html'"></div>
+        </md-content>
         <span flex></span>
+        <md-divider ></md-divider>
+        <div style="text-align: center;" layout-padding>
+            <div class="fb-like" data-href="https://facebook.com/200mins/" data-width="100" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
+        </div>
         <small style="color: grey;" layout-padding>This site is in ACTIVE DEVELOPMENT. Your account MAY BE DELETED without notice. Do not fret; simply register again. You'll know this won't happen when this message is removed. We promise good things to you. Cheers!</small>
     </md-sidenav>
 

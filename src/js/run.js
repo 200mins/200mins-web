@@ -161,6 +161,8 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
 
         $rootScope.$on('$stateChangeSuccess', function () {
 
+            $rootScope.closeSidenav();
+
             if (ENV === 'PROD') {
 
                 window.ga('send', 'pageview', {page: $location.path()});

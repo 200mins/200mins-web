@@ -22,7 +22,7 @@
 
                             <md-input-container>
                                 <label>Username</label>
-                                <input required type="text" name="username" ng-model="credentials.username" md-autofocus>
+                                <input autocapitalize="none" required type="text" name="username" ng-model="credentials.username" md-autofocus>
                                 <div ng-messages="loginForm.username.$error" role="alert">
                                     <span ng-message=required>This is required.</span>
                                 </div>
@@ -61,7 +61,7 @@
 
                             <md-input-container>
                                 <label>Username</label>
-                                <input required type="text" name="username" ng-model="credentials.username" ng-pattern="/^[a-z0-9_-]{4,12}$/">
+                                <input autocapitalize="none" required type="text" name="username" ng-model="credentials.username" ng-pattern="/^[a-z0-9_-]{4,12}$/">
                                 <div ng-messages="registrationForm.username.$error" role="alert">
                                     <span ng-message-exp="['required', 'pattern']">4-12 characters; lowercase letters and numbers only.</span>
                                 </div>

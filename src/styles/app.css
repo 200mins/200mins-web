@@ -21,6 +21,11 @@
     width: 24px;
 }
 
+.sidenav-icon {
+    height: 20px;
+    margin-right: 10px;
+}
+
 .small-button {
     min-width: 30%;
 }
@@ -51,6 +56,11 @@
 .hero .md-button {
     font-size: 18px;
     padding: 6px 18px;
+}
+
+.home-tile {
+    height: 290px;
+    width: 325px;
 }
 
 /* Movie - Browse */
