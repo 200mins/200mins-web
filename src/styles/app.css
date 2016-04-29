@@ -41,6 +41,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-bottom: 7.5px;
     padding: 150px 30;
     text-align: center;
 }
@@ -60,7 +61,12 @@
 
 .home-tile {
     height: 290px;
-    width: 325px;
+    padding-top: 15px;
+    width: 290px;
+}
+
+.home-tile md-card-title {
+    padding-bottom: 10px;
 }
 
 /* Movie - Browse */
