@@ -15,9 +15,9 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
             $scope.getMovieParams = {movie_id: $stateParams.id};
 
             $scope.movieStatus = {
-                isLike: false,
-                isWatchLater: false,
-                isWatched: false
+                isMovieLike: false,
+                isMovieMarkWatchLater: false,
+                isMovieMarkWatched: false
             };
 
             $scope.getMovie();
@@ -38,7 +38,7 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
                         $rootScope.initializeUser().then(function () {
 
-                            $scope.getMovieStatus();
+                            $scope.getUserActivity();
 
                         });
 
@@ -64,9 +64,9 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
         };
 
-        $scope.getMovieStatus = function () {
+        $scope.getUserActivity = function () {
 
-            movieService.getStatus($scope.movie.imdb_code).then(function (response) {
+            movieService.getUserActivity($scope.movie.imdb_code).then(function (response) {
 
                 switch (response.status) {
 
@@ -100,17 +100,17 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
         };
 
-        $scope.like = function (imdbID, value, e) {
+        $scope.movieLike = function (imdbID, value, e) {
 
             $rootScope.initializeUser().then(function () {
 
-                activityService.like(imdbID, value).then(function (response) {
+                activityService.postMovieLike(imdbID, value).then(function (response) {
 
                     switch (response.status) {
 
                         case 200:
 
-                            $scope.movieStatus.isLike = !$scope.movieStatus.isLike;
+                            $scope.movieStatus.isMovieLike = !$scope.movieStatus.isMovieLike;
 
                             break;
 
@@ -144,17 +144,17 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
         };
 
-        $scope.markWatch = function (imdbID, value, e) {
+        $scope.movieMarkWatchLater = function (imdbID, value, e) {
 
             $rootScope.initializeUser().then(function () {
 
-                activityService.markWatch(imdbID, value).then(function (response) {
+                activityService.postMovieMarkWatchLater(imdbID, value).then(function (response) {
 
                     switch (response.status) {
 
                         case 200:
 
-                            $scope.movieStatus.isWatchLater = !$scope.movieStatus.isWatchLater;
+                            $scope.movieStatus.isMovieMarkWatchLater = !$scope.movieStatus.isMovieMarkWatchLater;
 
                             break;
 
@@ -187,17 +187,17 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
             });
         }
 
-        $scope.markWatched = function (imdbID, value, e) {
+        $scope.movieMarkWatched = function (imdbID, value, e) {
 
             $rootScope.initializeUser().then(function () {
 
-                activityService.markWatched(imdbID, value).then(function (response) {
+                activityService.postMovieMarkWatched(imdbID, value).then(function (response) {
 
                     switch (response.status) {
 
                         case 200:
 
-                            $scope.movieStatus.isWatched = !$scope.movieStatus.isWatched;
+                            $scope.movieStatus.isMovieMarkWatched = !$scope.movieStatus.isMovieMarkWatched;
 
                             break;
 

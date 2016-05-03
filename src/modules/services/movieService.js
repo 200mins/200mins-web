@@ -2,13 +2,13 @@
 
 angular.module('200mins-web').service('movieService', ['ENV', '$http', '$rootScope', function (ENV, $http, $rootScope) {
 
-        this.getStatus = function (imdbID) {
+        this.getUserActivity = function (imdbID) {
 
             var config = {
                 headers: {'Authorization': $rootScope.token}
             };
 
-            return $http.get($rootScope.apiURL + 'movie/' + imdbID + '/status', config).then(function (response) {
+            return $http.get($rootScope.apiURL + 'movie/' + imdbID + '/user-activity', config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 

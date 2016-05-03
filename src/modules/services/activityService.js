@@ -2,15 +2,15 @@
 
 angular.module('200mins-web').service('activityService', ['ENV', '$http', '$rootScope', 'userService', function (ENV, $http, $rootScope, userService) {
 
-        this.download = function (imdbID, quality) {
+        this.postMovieDownload = function (imdbID, quality) {
 
             var config = {headers: {'Authorization': $rootScope.token}};
 
-            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/download?quality=' + quality, null, config).then(function (response) {
+            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/movie-download?quality=' + quality, null, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
-                    console.info('download: ', response);
+                    console.info('postMovieDownload: ', response);
 
                 }
 
@@ -22,7 +22,7 @@ angular.module('200mins-web').service('activityService', ['ENV', '$http', '$root
 
                 if (ENV !== 'PROD') {
 
-                    console.warn('download: ', err);
+                    console.warn('postMovieDownload: ', err);
 
                 }
 
@@ -32,7 +32,7 @@ angular.module('200mins-web').service('activityService', ['ENV', '$http', '$root
 
         };
 
-        this.like = function (imdbID, value) {
+        this.postMovieLike = function (imdbID, value) {
 
             var config = {headers: {'Authorization': $rootScope.token}};
 
@@ -40,7 +40,7 @@ angular.module('200mins-web').service('activityService', ['ENV', '$http', '$root
 
                 if (ENV !== 'PROD') {
 
-                    console.info('like: ', response);
+                    console.info('postMovieLike: ', response);
 
                 }
 
@@ -52,7 +52,7 @@ angular.module('200mins-web').service('activityService', ['ENV', '$http', '$root
 
                 if (ENV !== 'PROD') {
 
-                    console.warn('like: ', err);
+                    console.warn('postMovieLike: ', err);
 
                 }
 
@@ -62,15 +62,15 @@ angular.module('200mins-web').service('activityService', ['ENV', '$http', '$root
 
         };
 
-        this.markWatch = function (imdbID, value) {
+        this.postMovieMarkWatchLater = function (imdbID, value) {
 
             var config = {headers: {'Authorization': $rootScope.token}};
 
-            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/movie-watch-later?value=' + value, null, config).then(function (response) {
+            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/movie-mark-watch-later?value=' + value, null, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
-                    console.info('markWatch: ', response);
+                    console.info('postMovieMarkWatchLater: ', response);
 
                 }
 
@@ -82,7 +82,7 @@ angular.module('200mins-web').service('activityService', ['ENV', '$http', '$root
 
                 if (ENV !== 'PROD') {
 
-                    console.warn('markWatch: ', err);
+                    console.warn('postMovieMarkWatchLater: ', err);
 
                 }
 
@@ -92,15 +92,15 @@ angular.module('200mins-web').service('activityService', ['ENV', '$http', '$root
 
         };
 
-        this.markWatched = function (imdbID, value) {
+        this.postMovieMarkWatched = function (imdbID, value) {
 
             var config = {headers: {'Authorization': $rootScope.token}};
 
-            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/movie-watched?value=' + value, null, config).then(function (response) {
+            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/movie-mark-watched?value=' + value, null, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
-                    console.info('markWatched: ', response);
+                    console.info('postMovieMarkWatched: ', response);
 
                 }
 
@@ -112,7 +112,7 @@ angular.module('200mins-web').service('activityService', ['ENV', '$http', '$root
 
                 if (ENV !== 'PROD') {
 
-                    console.warn('markWatched: ', err);
+                    console.warn('postMovieMarkWatched: ', err);
 
                 }
 
@@ -122,15 +122,15 @@ angular.module('200mins-web').service('activityService', ['ENV', '$http', '$root
 
         };
 
-        this.play = function (imdbID, quality) {
+        this.postMoviePlay = function (imdbID, quality) {
 
             var config = {headers: {'Authorization': $rootScope.token}};
 
-            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/play?quality=' + quality, null, config).then(function (response) {
+            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/movie-play?quality=' + quality, null, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
-                    console.info('play: ', response);
+                    console.info('postMoviePlay: ', response);
 
                 }
 
@@ -142,7 +142,7 @@ angular.module('200mins-web').service('activityService', ['ENV', '$http', '$root
 
                 if (ENV !== 'PROD') {
 
-                    console.warn('play: ', err);
+                    console.warn('postMoviePlay: ', err);
 
                 }
 
