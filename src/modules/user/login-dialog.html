@@ -61,9 +61,9 @@
 
                             <md-input-container>
                                 <label>Username</label>
-                                <input autocapitalize="none" required type="text" name="username" ng-model="credentials.username" ng-pattern="/^[a-z0-9]{3,9}$/">
+                                <input autocapitalize="none" required type="text" name="username" ng-model="credentials.username" ng-pattern="/^[a-z0-9]{3,13}$/">
                                 <div ng-messages="registrationForm.username.$error" role="alert">
-                                    <span ng-message-exp="['required', 'pattern']">3-9 characters; lowercase letters and numbers only.</span>
+                                    <span ng-message-exp="['required', 'pattern']">3-15 characters; lowercase letters and numbers only.</span>
                                 </div>
                             </md-input-container>
 
