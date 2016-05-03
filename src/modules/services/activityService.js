@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('200mins-web').service('activityService', ['ENDPOINTS', 'ENV', '$http', '$rootScope', 'userService', function (ENDPOINTS, ENV, $http, $rootScope, userService) {
+angular.module('200mins-web').service('activityService', ['ENV', '$http', '$rootScope', 'userService', function (ENV, $http, $rootScope, userService) {
 
-        this.download = function (data) {
+        this.download = function (imdbID, quality) {
 
             var config = {headers: {'Authorization': $rootScope.token}};
 
-            return $http.post($rootScope.apiURL + ENDPOINTS.download, data, config).then(function (response) {
+            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/download?quality=' + quality, null, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
@@ -32,11 +32,11 @@ angular.module('200mins-web').service('activityService', ['ENDPOINTS', 'ENV', '$
 
         };
 
-        this.like = function (data) {
+        this.like = function (imdbID, value) {
 
             var config = {headers: {'Authorization': $rootScope.token}};
 
-            return $http.post($rootScope.apiURL + ENDPOINTS.like, data, config).then(function (response) {
+            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/movie-like?value=' + value, null, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
@@ -62,41 +62,11 @@ angular.module('200mins-web').service('activityService', ['ENDPOINTS', 'ENV', '$
 
         };
 
-        this.unlike = function (data) {
+        this.markWatch = function (imdbID, value) {
 
             var config = {headers: {'Authorization': $rootScope.token}};
 
-            return $http.post($rootScope.apiURL + ENDPOINTS.unlike, data, config).then(function (response) {
-
-                if (ENV !== 'PROD') {
-
-                    console.info('unlike: ', response);
-
-                }
-
-                userService.updateKarma(response.data.karmaDelta);
-
-                return response;
-
-            }, function (err) {
-
-                if (ENV !== 'PROD') {
-
-                    console.warn('unlike: ', err);
-
-                }
-
-                return err;
-
-            });
-
-        };
-
-        this.markWatch = function (data) {
-
-            var config = {headers: {'Authorization': $rootScope.token}};
-
-            return $http.post($rootScope.apiURL + ENDPOINTS.markWatch, data, config).then(function (response) {
+            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/movie-watch-later?value=' + value, null, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
@@ -122,41 +92,11 @@ angular.module('200mins-web').service('activityService', ['ENDPOINTS', 'ENV', '$
 
         };
 
-        this.unmarkWatch = function (data) {
+        this.markWatched = function (imdbID, value) {
 
             var config = {headers: {'Authorization': $rootScope.token}};
 
-            return $http.post($rootScope.apiURL + ENDPOINTS.unmarkWatch, data, config).then(function (response) {
-
-                if (ENV !== 'PROD') {
-
-                    console.info('unmarkWatch: ', response);
-
-                }
-
-                userService.updateKarma(response.data.karmaDelta);
-
-                return response;
-
-            }, function (err) {
-
-                if (ENV !== 'PROD') {
-
-                    console.warn('unmarkWatch: ', err);
-
-                }
-
-                return err;
-
-            });
-
-        };
-
-        this.markWatched = function (data) {
-
-            var config = {headers: {'Authorization': $rootScope.token}};
-
-            return $http.post($rootScope.apiURL + ENDPOINTS.markWatched, data, config).then(function (response) {
+            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/movie-watched?value=' + value, null, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
@@ -182,15 +122,15 @@ angular.module('200mins-web').service('activityService', ['ENDPOINTS', 'ENV', '$
 
         };
 
-        this.unmarkWatched = function (data) {
+        this.play = function (imdbID, quality) {
 
             var config = {headers: {'Authorization': $rootScope.token}};
 
-            return $http.post($rootScope.apiURL + ENDPOINTS.unmarkWatched, data, config).then(function (response) {
+            return $http.post($rootScope.apiURL + 'activity/' + imdbID + '/play?quality=' + quality, null, config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
-                    console.info('unmarkWatched: ', response);
+                    console.info('play: ', response);
 
                 }
 
@@ -202,37 +142,7 @@ angular.module('200mins-web').service('activityService', ['ENDPOINTS', 'ENV', '$
 
                 if (ENV !== 'PROD') {
 
-                    console.warn('unmarkWatched: ', err);
-
-                }
-
-                return err;
-
-            });
-
-        };
-
-        this.stream = function (data) {
-
-            var config = {headers: {'Authorization': $rootScope.token}};
-
-            return $http.post($rootScope.apiURL + ENDPOINTS.stream, data, config).then(function (response) {
-
-                if (ENV !== 'PROD') {
-
-                    console.info('stream: ', response);
-
-                }
-
-                userService.updateKarma(response.data.karmaDelta);
-
-                return response;
-
-            }, function (err) {
-
-                if (ENV !== 'PROD') {
-
-                    console.warn('stream: ', err);
+                    console.warn('play: ', err);
 
                 }
 

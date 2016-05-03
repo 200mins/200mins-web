@@ -1,15 +1,14 @@
 'use strict';
 
-angular.module('200mins-web').service('movieService', ['ENDPOINTS', 'ENV', '$http', '$rootScope', function (ENDPOINTS, ENV, $http, $rootScope) {
+angular.module('200mins-web').service('movieService', ['ENV', '$http', '$rootScope', function (ENV, $http, $rootScope) {
 
-        this.getStatus = function (params) {
+        this.getStatus = function (imdbID) {
 
             var config = {
-                headers: {'Authorization': $rootScope.token},
-                params: params
+                headers: {'Authorization': $rootScope.token}
             };
 
-            return $http.get($rootScope.apiURL + ENDPOINTS.getStatus, config).then(function (response) {
+            return $http.get($rootScope.apiURL + 'movie/' + imdbID + '/status', config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
@@ -33,15 +32,15 @@ angular.module('200mins-web').service('movieService', ['ENDPOINTS', 'ENV', '$htt
 
         };
 
-        this.listMovies = function (params) {
+        this.getListMovies = function (params) {
 
             var config = {params: params};
 
-            return $http.get($rootScope.apiURL + ENDPOINTS.listMovies, config).then(function (response) {
+            return $http.get($rootScope.apiURL + 'proxy/list_movies', config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
-                    console.info('listMovies: ', response);
+                    console.info('getListMovies: ', response);
 
                 }
 
@@ -51,7 +50,7 @@ angular.module('200mins-web').service('movieService', ['ENDPOINTS', 'ENV', '$htt
 
                 if (ENV !== 'PROD') {
 
-                    console.warn('listMovies: ', err);
+                    console.warn('getListMovies: ', err);
 
                 }
 
@@ -61,15 +60,15 @@ angular.module('200mins-web').service('movieService', ['ENDPOINTS', 'ENV', '$htt
 
         };
 
-        this.movieDetails = function (params) {
+        this.getMovieDetails = function (params) {
 
             var config = {params: params};
 
-            return $http.get($rootScope.apiURL + ENDPOINTS.movieDetails, config).then(function (response) {
+            return $http.get($rootScope.apiURL + 'proxy/movie_details', config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
-                    console.info('movieDetails: ', response);
+                    console.info('getMovieDetails: ', response);
 
                 }
 
@@ -79,7 +78,7 @@ angular.module('200mins-web').service('movieService', ['ENDPOINTS', 'ENV', '$htt
 
                 if (ENV !== 'PROD') {
 
-                    console.warn('movieDetails: ', err);
+                    console.warn('getMovieDetails: ', err);
 
                 }
 

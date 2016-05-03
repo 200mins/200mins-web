@@ -16,7 +16,7 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
             $scope.movieStatus = {
                 isLike: false,
-                isWatch: false,
+                isWatchLater: false,
                 isWatched: false
             };
 
@@ -28,7 +28,7 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
             $rootScope.setNascentState(true);
 
-            movieService.movieDetails($scope.getMovieParams).then(function (response) {
+            movieService.getMovieDetails($scope.getMovieParams).then(function (response) {
 
                 switch (response.status) {
 
@@ -66,9 +66,7 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
         $scope.getMovieStatus = function () {
 
-            var params = {movieID: $scope.movie.imdb_code};
-
-            movieService.getStatus(params).then(function (response) {
+            movieService.getStatus($scope.movie.imdb_code).then(function (response) {
 
                 switch (response.status) {
 
@@ -102,13 +100,11 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
         };
 
-        $scope.like = function (e) {
+        $scope.like = function (imdbID, value, e) {
 
             $rootScope.initializeUser().then(function () {
 
-                var data = {movie: $scope.movie};
-
-                activityService.like(data).then(function (response) {
+                activityService.like(imdbID, value).then(function (response) {
 
                     switch (response.status) {
 
@@ -148,65 +144,17 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
         };
 
-        $scope.unlike = function () {
+        $scope.markWatch = function (imdbID, value, e) {
 
             $rootScope.initializeUser().then(function () {
 
-                var data = {movie: $scope.movie};
-
-                activityService.unlike(data).then(function (response) {
+                activityService.markWatch(imdbID, value).then(function (response) {
 
                     switch (response.status) {
 
                         case 200:
 
-                            $scope.movieStatus.isLike = !$scope.movieStatus.isLike;
-
-                            break;
-
-                        case 403:
-
-                            utilityService.notify(response.data);
-
-                            break;
-
-                        case 401:
-
-                            $rootScope.logout(true);
-
-                            utilityService.notify(response.data);
-
-                            break;
-
-                        default:
-
-                            utilityService.notify('Service is down.');
-
-                    }
-
-                });
-
-            }, function () {
-
-                $rootScope.showLoginDialog(e);
-
-            });
-
-        };
-
-        $scope.markWatch = function (e) {
-
-            $rootScope.initializeUser().then(function () {
-
-                var data = {movie: $scope.movie};
-
-                activityService.markWatch(data).then(function (response) {
-
-                    switch (response.status) {
-
-                        case 200:
-
-                            $scope.movieStatus.isWatch = !$scope.movieStatus.isWatch;
+                            $scope.movieStatus.isWatchLater = !$scope.movieStatus.isWatchLater;
 
                             break;
 
@@ -239,103 +187,11 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
             });
         }
 
-        $scope.unmarkWatch = function () {
+        $scope.markWatched = function (imdbID, value, e) {
 
             $rootScope.initializeUser().then(function () {
 
-                var data = {movie: $scope.movie};
-
-                activityService.unmarkWatch(data).then(function (response) {
-
-                    switch (response.status) {
-
-                        case 200:
-
-                            $scope.movieStatus.isWatch = !$scope.movieStatus.isWatch;
-
-                            break;
-
-                        case 403:
-
-                            utilityService.notify(response.data);
-
-                            break;
-
-                        case 401:
-
-                            $rootScope.logout(true);
-
-                            utilityService.notify(response.data);
-
-                            break;
-
-                        default:
-
-                            utilityService.notify('Service is down.');
-
-                    }
-
-                });
-
-            }, function () {
-
-                $rootScope.showLoginDialog(e);
-
-            });
-        }
-
-        $scope.markWatched = function (e) {
-
-            $rootScope.initializeUser().then(function () {
-
-                var data = {movie: $scope.movie};
-
-                activityService.markWatched(data).then(function (response) {
-
-                    switch (response.status) {
-
-                        case 200:
-
-                            $scope.movieStatus.isWatched = !$scope.movieStatus.isWatched;
-
-                            break;
-
-                        case 403:
-
-                            utilityService.notify(response.data);
-
-                            break;
-
-                        case 401:
-
-                            $rootScope.logout(true);
-
-                            utilityService.notify(response.data);
-
-                            break;
-
-                        default:
-
-                            utilityService.notify('Service is down.');
-
-                    }
-
-                });
-
-            }, function () {
-
-                $rootScope.showLoginDialog(e);
-
-            });
-        };
-
-        $scope.unmarkWatched = function () {
-
-            $rootScope.initializeUser().then(function () {
-
-                var data = {movie: $scope.movie};
-
-                activityService.unmarkWatched(data).then(function (response) {
+                activityService.markWatched(imdbID, value).then(function (response) {
 
                     switch (response.status) {
 

@@ -101,7 +101,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
             $scope.isNascent = true;
 
-            movieService.listMovies($scope.getMoviesParams).then(function (response) {
+            movieService.getListMovies($scope.getMoviesParams).then(function (response) {
 
                 if (response && response.status === 200) {
 

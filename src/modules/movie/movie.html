@@ -11,24 +11,24 @@
             <span flex></span>
 
             <section ng-hide="$root.nascent">
-                <md-button ng-click="markWatch($event)" aria-label="Mark Watch" class="md-icon-button" ng-show="!movieStatus.isWatch">
+                <md-button ng-click="markWatch(movie.imdb_code, 'true', $event)" aria-label="Mark Watch" class="md-icon-button" ng-show="!movieStatus.isWatchLater">
                     <md-icon md-svg-src="img/ic_update_black_24px.svg"></md-icon></span>
                 </md-button>
-                <md-button ng-click="unmarkWatch()" aria-label="Unmark Watch" class="md-icon-button" ng-show="movieStatus.isWatch">
+                <md-button ng-click="markWatch(movie.imdb_code, 'false', $event)" aria-label="Unmark Watch" class="md-icon-button" ng-show="movieStatus.isWatchLater">
                     <md-icon md-svg-src="img/ic_watch_later_black_24px.svg"></md-icon></span>
                 </md-button>
 
-                <md-button ng-click="markWatched($event)" aria-label="Mark Watched" class="md-icon-button" ng-show="!movieStatus.isWatched">
+                <md-button ng-click="markWatched(movie.imdb_code, 'true', $event)" aria-label="Mark Watched" class="md-icon-button" ng-show="!movieStatus.isWatched">
                     <md-icon md-svg-src="img/ic_visibility_off_black_24px.svg"></md-icon></span>
                 </md-button>
-                <md-button ng-click="unmarkWatched()" aria-label="Unmark Watched" class="md-icon-button" ng-show="movieStatus.isWatched">
+                <md-button ng-click="markWatched(movie.imdb_code, 'false', $event)" aria-label="Unmark Watched" class="md-icon-button" ng-show="movieStatus.isWatched">
                     <md-icon md-svg-src="img/ic_visibility_black_24px.svg"></md-icon></span>
                 </md-button>
 
-                <md-button ng-click="like($event)" aria-label="Like" class="md-icon-button" ng-show="!movieStatus.isLike">
+                <md-button ng-click="like(movie.imdb_code, 'true', $event)" aria-label="Like" class="md-icon-button" ng-show="!movieStatus.isLike">
                     <md-icon md-svg-src="img/ic_favorite_border_black_24px.svg"></md-icon></span>
                 </md-button>
-                <md-button ng-click="unlike()" aria-label="Unlike" class="md-icon-button" ng-show="movieStatus.isLike">
+                <md-button ng-click="like(movie.imdb_code, 'false', $event)" aria-label="Unlike" class="md-icon-button" ng-show="movieStatus.isLike">
                     <md-icon md-svg-src="img/ic_favorite_black_24px.svg"></md-icon></span>
                 </md-button>
             </section>

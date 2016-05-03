@@ -32,11 +32,10 @@ angular.module('200mins-web').controller('LoginCtrl', ['$mdDialog', '$rootScope'
             $rootScope.setNascentState(true);
 
             var params = {
-                password: md5.createHash($scope.credentials.password),
-                username: $scope.credentials.username
+                password: md5.createHash($scope.credentials.password)
             };
 
-            userService.login(params).then(function (response) {
+            userService.login($scope.credentials.username, params).then(function (response) {
 
                 if (typeof response === 'undefined') {
 

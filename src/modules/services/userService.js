@@ -1,40 +1,12 @@
 'use strict';
 
-angular.module('200mins-web').service('userService', ['ENDPOINTS', 'ENV', '$http', '$rootScope', 'localStorageService', 'utilityService', function (ENDPOINTS, ENV, $http, $rootScope, localStorageService, utilityService) {
+angular.module('200mins-web').service('userService', ['ENV', '$http', '$rootScope', 'localStorageService', 'utilityService', function (ENV, $http, $rootScope, localStorageService, utilityService) {
 
-        this.checkUsername = function (params) {
-
-            var config = {params: params};
-
-            return $http.get($rootScope.apiURL + ENDPOINTS.checkUsername, config).then(function (response) {
-
-                if (ENV !== 'PROD') {
-
-                    console.info('checkUsername: ', response);
-
-                }
-
-                return response;
-
-            }, function (err) {
-
-                if (ENV !== 'PROD') {
-
-                    console.warn('checkUsername: ', err);
-
-                }
-
-                return err;
-
-            });
-
-        };
-
-        this.login = function (params) {
+        this.login = function (username, params) {
 
             var config = {params: params};
 
-            return $http.get($rootScope.apiURL + ENDPOINTS.login, config).then(function (response) {
+            return $http.get($rootScope.apiURL + 'user/' + username + '/session', config).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
@@ -60,7 +32,7 @@ angular.module('200mins-web').service('userService', ['ENDPOINTS', 'ENV', '$http
 
         this.register = function (data) {
 
-            return $http.post($rootScope.apiURL + ENDPOINTS.register, data).then(function (response) {
+            return $http.post($rootScope.apiURL + 'user', data).then(function (response) {
 
                 if (ENV !== 'PROD') {
 
