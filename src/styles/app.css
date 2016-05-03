@@ -1,4 +1,15 @@
+/* Keyframes */
+@keyframes blink {  
+    50% {
+        opacity: 0;
+    }
+}
+
 /* Global Styles */
+
+.blink {
+    animation: blink 1s linear infinite;
+}
 
 .capitalize {
     text-transform: capitalize;
@@ -57,9 +68,19 @@
 }
 
 .feature-tile {
-    height: 262.5px;
-    padding-top: 10px;
-    width: 275px;
+    height: 220px;
+    width: 250px;
+}
+
+.feature-tile img {
+    height: 100px;
+    margin: 15px auto 15px;
+    width: 100px;
+}
+
+.feature-tile md-card-title {
+    padding: 0 16px;
+    text-align: center;
 }
 
 .feature-tile md-card-content p {
