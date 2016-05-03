@@ -155,11 +155,11 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
         };
 
-        $scope.play = function (imdbID, torrent, e) {
+        $scope.play = function (movie, torrent, e) {
 
             $rootScope.initializeUser().then(function () {
 
-                activityService.play(imdbID, torrent.quality).then(function (response) {
+                activityService.play(movie.imdb_code, torrent.quality).then(function (response) {
 
                     if (typeof response === 'undefined') {
 
