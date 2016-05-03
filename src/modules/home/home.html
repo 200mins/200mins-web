@@ -1,8 +1,10 @@
-<div class="hero">
+<!-- Hero -->
+<div class="hero" style="background-image: url('img/bg.png');">
     <h1>because, movies.</h1>
-    <md-button class="md-raised md-primary" ng-click="$root.changeState('movies')">
+    <md-button class="md-raised md-primary" ng-click="$root.changeState('movies')" aria-label="Browse Now">
         <span>Browse Now</span>
     </md-button>
 </div>
 
+<!-- Feature tiles -->
 <div ng-include="'templates/feature-tiles.html'"></div>

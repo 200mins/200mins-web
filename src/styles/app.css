@@ -37,21 +37,18 @@
 /* Home */
 
 .hero {
-    background-image: url('https://unsplash.it/1200/500?image=902');
-    background-position: center;
+    background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-bottom: 7.5px;
-    padding: 150px 30;
+    padding: 250px 0;
     text-align: center;
 }
 
 .hero h1 {
     color: white;
     font-size: 70px;
-    font-weight: 300;
     margin-top: 0;
-    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .hero .md-button {
@@ -59,14 +56,14 @@
     padding: 6px 18px;
 }
 
-.home-tile {
-    height: 290px;
-    padding-top: 15px;
-    width: 290px;
+.feature-tile {
+    height: 262.5px;
+    padding-top: 10px;
+    width: 275px;
 }
 
-.home-tile md-card-title {
-    padding-bottom: 10px;
+.feature-tile md-card-content p {
+    font-size: 14px;
 }
 
 /* Movie - Browse */
