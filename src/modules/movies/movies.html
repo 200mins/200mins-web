@@ -44,13 +44,13 @@
                 </section>
 
                 <section flex layout="row" layout-align="end center" ng-show="selectedMovie.intention === 'download'">
-                    <md-button ng-repeat="torrent in movie.torrents" class="md-primary small-button" ng-click="download($event, movie, torrent)">
+                    <md-button ng-repeat="torrent in movie.torrents" class="md-primary small-button" ng-click="download(movie.imdb_code, torrent, $event)">
                         <span>{{torrent.quality}}</span>
                     </md-button>
                 </section>
 
                 <section flex layout="row" layout-align="end center" ng-show="selectedMovie.intention === 'stream'">
-                    <md-button ng-repeat="torrent in movie.torrents" class="md-primary small-button" ng-click="stream($event, movie, torrent)">
+                    <md-button ng-repeat="torrent in movie.torrents" class="md-primary small-button" ng-click="play(movie.imdb_code, torrent, $event)">
                         <span>{{torrent.quality}}</span>
                     </md-button>
                 </section>

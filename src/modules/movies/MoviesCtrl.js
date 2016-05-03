@@ -40,16 +40,11 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
         };
 
-        $scope.download = function (e, movie, torrent) {
+        $scope.download = function (imdbID, torrent, e) {
 
             $rootScope.initializeUser().then(function () {
 
-                var data = {
-                    movie: utilityService.cleanMovie(movie),
-                    quality: torrent.quality
-                };
-
-                activityService.download(data).then(function (response) {
+                activityService.download(imdbID, torrent.quality).then(function (response) {
 
                     if (typeof response === 'undefined') {
 
@@ -160,16 +155,11 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
         };
 
-        $scope.stream = function (e, movie, torrent) {
+        $scope.play = function (imdbID, torrent, e) {
 
             $rootScope.initializeUser().then(function () {
 
-                var data = {
-                    movie: utilityService.cleanMovie(movie),
-                    quality: torrent.quality
-                };
-
-                activityService.stream(data).then(function (response) {
+                activityService.play(imdbID, torrent.quality).then(function (response) {
 
                     if (typeof response === 'undefined') {
 

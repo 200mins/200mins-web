@@ -2,39 +2,6 @@
 
 angular.module('200mins-web').service('utilityService', ['$mdToast', function ($mdToast) {
 
-        this.cleanMovie = function (movie) {
-
-            var cleanedMovie = {};
-
-            var cleanedMovieKeys = {
-                id: true,
-                imdb_code: true,
-                title: true,
-                year: true,
-                rating: true,
-                runtime: true,
-                genres: true,
-                medium_cover_image: true
-            };
-
-            for (var key in cleanedMovieKeys) {
-
-                if (movie.hasOwnProperty(key)) {
-
-                    cleanedMovie[key] = movie[key];
-
-                } else {
-
-                    return false;
-
-                }
-
-            }
-
-            return cleanedMovie;
-
-        };
-
         this.isObjectEmpty = function (obj) {
 
             for (var key in obj) {
