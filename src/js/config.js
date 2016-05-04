@@ -1,6 +1,10 @@
 'use strict';
 
-angular.module('200mins-web').config(['$mdThemingProvider', '$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function ($mdThemingProvider, $stateProvider, $urlRouterProvider, localStorageServiceProvider) {
+angular.module('200mins-web').config(['$compileProvider', '$httpProvider', '$mdThemingProvider', '$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function ($compileProvider, $httpProvider, $mdThemingProvider, $stateProvider, $urlRouterProvider, localStorageServiceProvider) {
+
+        $compileProvider.debugInfoEnabled(false);
+
+        $httpProvider.useApplyAsync(true);
 
         $mdThemingProvider.theme('default')
                 .primaryPalette('pink')
