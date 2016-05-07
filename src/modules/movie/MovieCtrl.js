@@ -185,7 +185,7 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
                 $rootScope.showLoginDialog(e);
 
             });
-        }
+        };
 
         $scope.movieMarkWatched = function (imdbID, value, e) {
 
@@ -232,6 +232,14 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
         /* --- RUN --- */
 
-        $scope.initialize();
+        $rootScope.initializeUser().then(function () {
+
+            $scope.initialize();
+
+        }, function () {
+
+            $scope.initialize();
+
+        });
 
     }]);
