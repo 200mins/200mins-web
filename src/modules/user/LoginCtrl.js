@@ -88,54 +88,71 @@ angular.module('200mins-web').controller('LoginCtrl', ['$mdDialog', '$rootScope'
             $rootScope.setNascentState(true);
 
             var data = {
+                city: null,
+                countryCode: null,
                 email: $scope.credentials.email,
                 password: md5.createHash($scope.credentials.password),
                 username: $scope.credentials.username
             };
 
-            userService.register(data).then(function (response) {
+            userService.getLocation().then(function (response) {
 
                 if (typeof response === 'undefined') {
 
-                    utilityService.notify('Couldn\'t reach 200mins.');
+                    utilityService.notify('Please try again.');
 
                 } else {
 
-                    switch (response.status) {
+                    data.city = response.data.city;
+                    data.countryCode = response.data.countryCode;
 
-                        case 200:
+                    userService.register(data).then(function (response) {
 
-                            if (localStorageService.set('token', response.data.token) && localStorageService.set('user', response.data.user)) {
+                        if (typeof response === 'undefined') {
 
-                                $rootScope.initializeUser().then(function () {
+                            utilityService.notify('Couldn\'t reach 200mins.');
 
-                                    $mdDialog.hide();
+                        } else {
 
-                                }, function () {
+                            switch (response.status) {
 
-                                    utilityService.notify('Couldn\'t log you in.');
+                                case 200:
 
-                                });
+                                    if (localStorageService.set('token', response.data.token) && localStorageService.set('user', response.data.user)) {
+
+                                        $rootScope.initializeUser().then(function () {
+
+                                            $mdDialog.hide();
+
+                                        }, function () {
+
+                                            utilityService.notify('Couldn\'t log you in.');
+
+                                        });
+
+                                    }
+
+                                    break;
+
+                                case 403:
+
+                                    utilityService.notify(response.data);
+
+                                    break;
+
+                                default:
+
+                                    utilityService.notify('Service is down.');
 
                             }
 
-                            break;
+                        }
 
-                        case 403:
+                        $rootScope.setNascentState(false);
 
-                            utilityService.notify(response.data);
-
-                            break;
-
-                        default:
-
-                            utilityService.notify('Service is down.');
-
-                    }
+                    });
 
                 }
-
-                $rootScope.setNascentState(false);
 
             });
 

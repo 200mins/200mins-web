@@ -2,6 +2,32 @@
 
 angular.module('200mins-web').service('userService', ['ENV', '$http', '$rootScope', 'localStorageService', 'utilityService', function (ENV, $http, $rootScope, localStorageService, utilityService) {
 
+        this.getLocation = function () {
+
+            return $http.get('http://ip-api.com/json').then(function (response) {
+
+                if (ENV !== 'PROD') {
+
+                    console.info('getLocation: ', response);
+
+                }
+
+                return response;
+
+            }, function (err) {
+
+                if (ENV !== 'PROD') {
+
+                    console.warn('getLocation: ', err);
+
+                }
+
+                return err;
+
+            });
+
+        };
+
         this.login = function (username, params) {
 
             var config = {params: params};
