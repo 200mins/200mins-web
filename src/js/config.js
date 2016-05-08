@@ -47,7 +47,7 @@ angular.module('200mins-web').config(['$compileProvider', '$mdThemingProvider', 
                 .state('user.activity', {
                     controller: 'ActivityCtrl',
                     templateUrl: 'modules/user/activity.html',
-                    url: '/'
+                    url: ''
                 })
 
                 .state('user.downloads', {

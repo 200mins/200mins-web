@@ -1,3 +1,7 @@
-<md-card ng-repeat="activity in activities">
-    {{activity.movie.title}}
+<md-card class="movie-card" ng-repeat="activity in activities">
+    <img ng-src={{activity.movie.coverURL}} class="md-card-image">
+    <md-card-content>
+        <img src="img/ic_play_arrow_black_24px.svg">
+        {{activity.createdAt}}
+    </md-card-content>
 </md-card>

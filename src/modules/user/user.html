@@ -1,17 +1,36 @@
-<md-card>
-    <img style="height: 100px; width: 100px;" ng-src="{{$root.user.avatar}}">
-    <h1>{{$root.user.username}}</h1>
-</md-card>
+<!-- Page -->
+<div layout="row">
 
-<md-tabs md-stretch-tabs="always" md-border-bottom md-selected="activeTab" md-no-select-click>
+    <!-- User Card -->
+    <div flex="20">
+        <md-card>
+            <img ng-src="{{$root.user.avatar}}">
+            <md-card-content>
+                <h1>{{$root.user.username}}</h1>
+            </md-card-content>
+        </md-card>
+    </div>
 
-    <md-tab ng-repeat="tab in tabs" ng-click="changeTab($index)">
-        <md-tab-label>
-            <img ng-src="{{tab.icon}}" alt="{{tab.label}}">
-            <span>{{tab.label}}</span>
-        </md-tab-label>
-    </md-tab>
+    <!-- Activity Tabs and Content -->
+    <div flex="80">
+        <md-card>
+            <md-card-content>
 
-</md-tabs>
+                <!-- Activity Tabs -->
+                <md-tabs md-stretch-tabs="always" md-border-bottom md-selected="activeTab" md-no-select-click>
+                    <md-tab ng-repeat="tab in tabs" ng-click="changeTab($index)">
+                        <md-tab-label>
+                            <img class="label-img" ng-src="{{tab.icon}}" alt="{{tab.label}}">
+                            <span>{{tab.label}}</span>
+                        </md-tab-label>
+                    </md-tab>
+                </md-tabs>
 
-<div ui-view></div>
+                <!-- Content -->
+                <div ui-view></div>
+
+            </md-card-content>
+        </md-card>
+    </div>
+
+</div>

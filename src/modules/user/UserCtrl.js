@@ -14,7 +14,7 @@ angular.module('200mins-web').controller('UserCtrl', ['$rootScope', '$scope', '$
         $scope.tabs = [
             {
                 label: 'Activity',
-                icon: 'img/ic_pets_black_24px.svg',
+                icon: 'img/ic_explore_black_24px.svg',
                 state: 'user.activity'
             },
             {
