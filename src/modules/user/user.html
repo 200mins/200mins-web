@@ -2,4 +2,16 @@
     <img style="height: 100px; width: 100px;" ng-src="{{$root.user.avatar}}">
     <h1>{{$root.user.username}}</h1>
 </md-card>
+
+<md-tabs md-stretch-tabs="always" md-border-bottom md-selected="activeTab" md-no-select-click>
+
+    <md-tab ng-repeat="tab in tabs" ng-click="changeTab($index)">
+        <md-tab-label>
+            <img ng-src="{{tab.icon}}" alt="{{tab.label}}">
+            <span>{{tab.label}}</span>
+        </md-tab-label>
+    </md-tab>
+
+</md-tabs>
+
 <div ui-view></div>
