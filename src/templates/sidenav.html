@@ -22,24 +22,38 @@
 
     <md-subheader class="md-no-sticky">Your Activity</md-subheader>
 
-    <md-list-item ng-click="null">
-        <img ng-src="img/ic_favorite_black_24px.svg" class="sidenav-icon" alt="Liked" />
-        <div class="md-list-item-text">
-            <span>Liked</span>
-        </div>
-    </md-list-item>
-
-    <md-list-item ng-click="null">
+    <md-list-item ng-click="$root.changeState('user.watch-later', {username: $root.user.username})">
         <img ng-src="img/ic_watch_later_black_24px.svg" class="sidenav-icon" alt="Watch Later" />
         <div class="md-list-item-text">
             <span>Watch Later</span>
         </div>
     </md-list-item>
 
-    <md-list-item ng-click="null">
+    <md-list-item ng-click="$root.changeState('user.likes', {username: $root.user.username})">
+        <img ng-src="img/ic_favorite_black_24px.svg" class="sidenav-icon" alt="Liked" />
+        <div class="md-list-item-text">
+            <span>Liked</span>
+        </div>
+    </md-list-item>
+
+    <md-list-item ng-click="$root.changeState('user.watched', {username: $root.user.username})">
         <img ng-src="img/ic_visibility_black_24px.svg" class="sidenav-icon" alt="Watched" />
         <div class="md-list-item-text">
             <span>Watched</span>
+        </div>
+    </md-list-item>
+
+    <md-list-item ng-click="$root.changeState('user.downloads', {username: $root.user.username})">
+        <img ng-src="img/ic_cloud_download_black_24px.svg" class="sidenav-icon" alt="Watched" />
+        <div class="md-list-item-text">
+            <span>Downloads</span>
+        </div>
+    </md-list-item>
+
+    <md-list-item ng-click="$root.changeState('user.plays', {username: $root.user.username})">
+        <img ng-src="img/ic_play_arrow_black_24px.svg" class="sidenav-icon" alt="Watched" />
+        <div class="md-list-item-text">
+            <span>Plays</span>
         </div>
     </md-list-item>
 

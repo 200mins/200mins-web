@@ -15,9 +15,11 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
             $scope.getMovieParams = {movie_id: $stateParams.id};
 
             $scope.movieStatus = {
+                isMovieDownload: false,
                 isMovieLike: false,
                 isMovieMarkWatchLater: false,
-                isMovieMarkWatched: false
+                isMovieMarkWatched: false,
+                isMoviePlay: false
             };
 
             $scope.getMovie();

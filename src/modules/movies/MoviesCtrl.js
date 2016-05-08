@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 'activityService', 'localStorageService', 'movieService', 'utilityService', function ($rootScope, $scope, activityService, localStorageService, movieService, utilityService) {
+angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', '$state', 'activityService', 'localStorageService', 'movieService', 'utilityService', function ($rootScope, $scope, $state, activityService, localStorageService, movieService, utilityService) {
 
         /* --- MODELS --- */
 
@@ -35,6 +35,12 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
                 $scope.getMoviesParams = utilityService.mergeObjects($scope.getMoviesParams, $scope.filters, true);
 
             }
+
+            $scope.showMovieDetails = function (movieID) {
+
+                $rootScope.changeURL($state.href('movie', {id: movieID}), true);
+
+            };
 
             $scope.getMovies();
 

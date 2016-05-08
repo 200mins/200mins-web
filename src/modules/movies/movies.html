@@ -15,7 +15,7 @@
     <md-card class="movie-card" ng-repeat="movie in movies">
 
         <!-- Poster -->
-        <img style="cursor: pointer;" ng-src="{{movie.medium_cover_image}}" class="md-card-image" alt="{{movie.title}}" ng-click="$root.changeState('movie', {id: movie.id})">
+        <img style="cursor: pointer;" ng-src="{{movie.medium_cover_image}}" class="md-card-image" alt="{{movie.title}}" ng-click="showMovieDetails(movie.id)">
 
         <!-- Actions -->
         <md-card-actions layout="row">
