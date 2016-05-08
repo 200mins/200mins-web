@@ -5,12 +5,13 @@ var cssmin = require('gulp-cssmin');
 var htmlmin = require('gulp-htmlmin');
 var htmlreplace = require('gulp-html-replace');
 var mainBowerFiles = require('main-bower-files');
+var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var wiredep = require('wiredep').stream;
 
 /* --- CSS --- */
 
-gulp.task('css', ['app-css', 'vendor-css'], function () {
+gulp.task('css', ['scss', 'app-css', 'vendor-css'], function () {
     return gulp.src(['./tmp/vendor.css', './tmp/app.css'])
             .pipe(concat('app.css'))
             .pipe(cssmin())
@@ -20,6 +21,12 @@ gulp.task('css', ['app-css', 'vendor-css'], function () {
 gulp.task('app-css', function () {
     return gulp.src('./src/styles/app.css')
             .pipe(gulp.dest('./tmp/'));
+});
+
+gulp.task('scss', function () {
+  return gulp.src('./src/styles/app.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('./src/styles/'));
 });
 
 gulp.task('vendor-css', function () {

@@ -1,0 +1,37 @@
+.blink {
+  animation: blink 1s linear infinite;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.last-element {
+  margin: 25px 0 !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.png-icon {
+  border-radius: 2px;
+  display: inline-block;
+  height: 24px;
+  margin-right: 2px;
+  vertical-align: middle;
+  width: 24px;
+}
+
+.sidenav-icon {
+  height: 20px;
+  margin-right: 10px;
+}
+
+.small-button {
+  min-width: 30%;
+}
+
+.translucent-card {
+  background-color: rgba(255, 255, 255, 0.6);
+}

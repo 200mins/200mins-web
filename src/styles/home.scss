@@ -1,0 +1,39 @@
+.hero {
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 250px 0;
+  text-align: center;
+}
+
+.hero h1 {
+  color: white;
+  font-size: 70px;
+  margin-top: 0;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.hero .md-button {
+  font-size: 18px;
+  padding: 6px 18px;
+}
+
+.feature-tile {
+  height: 220px;
+  width: 250px;
+}
+
+.feature-tile img {
+  height: 100px;
+  margin: 15px auto 15px;
+  width: 100px;
+}
+
+.feature-tile md-card-title {
+  padding: 0 16px;
+  text-align: center;
+}
+
+.feature-tile md-card-content p {
+  font-size: 14px;
+}
