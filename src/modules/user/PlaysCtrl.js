@@ -21,7 +21,7 @@ angular.module('200mins-web').controller('PlaysCtrl', ['$scope', 'userService', 
 
         $scope.getPlays = function () {
 
-            userService.getMoviePlay($scope.username).then(function (response) {
+            userService.getMoviePlay($scope.user.username).then(function (response) {
 
                 if (typeof response === 'undefined') {
 

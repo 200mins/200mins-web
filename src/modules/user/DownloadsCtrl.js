@@ -21,7 +21,7 @@ angular.module('200mins-web').controller('DownloadsCtrl', ['$scope', 'userServic
 
         $scope.getDownloads = function () {
 
-            userService.getMovieDownload($scope.username).then(function (response) {
+            userService.getMovieDownload($scope.user.username).then(function (response) {
 
                 if (typeof response === 'undefined') {
 

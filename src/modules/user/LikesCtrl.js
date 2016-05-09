@@ -21,7 +21,7 @@ angular.module('200mins-web').controller('LikesCtrl', ['$scope', 'userService', 
 
         $scope.getLikes = function () {
 
-            userService.getMovieLike($scope.username).then(function (response) {
+            userService.getMovieLike($scope.user.username).then(function (response) {
 
                 if (typeof response === 'undefined') {
 

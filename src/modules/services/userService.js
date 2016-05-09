@@ -157,6 +157,32 @@ angular.module('200mins-web').service('userService', ['ENV', '$http', '$rootScop
             });
 
         };
+        
+        this.getUser = function(username){
+            
+            return $http.get($rootScope.apiURL + 'user/' + username).then(function (response) {
+
+                if (ENV !== 'PROD') {
+
+                    console.info('getUser: ', response);
+
+                }
+
+                return response;
+
+            }, function (err) {
+
+                if (ENV !== 'PROD') {
+
+                    console.warn('getUser: ', err);
+
+                }
+
+                return err;
+
+            });
+            
+        };
 
         this.login = function (username, params) {
 

@@ -21,7 +21,7 @@ angular.module('200mins-web').controller('WatchLaterCtrl', ['$scope', 'userServi
 
         $scope.getWatchLater = function () {
 
-            userService.getMovieWatchLater($scope.username).then(function (response) {
+            userService.getMovieWatchLater($scope.user.username).then(function (response) {
 
                 if (typeof response === 'undefined') {
 
