@@ -13,9 +13,9 @@ angular.module('200mins-web').controller('UserCtrl', ['$rootScope', '$scope', '$
 
         $scope.tabs = [
             {
-                label: 'Activity',
-                icon: 'img/ic_explore_black_24px.svg',
-                state: 'user.activity'
+                label: 'Statistics',
+                icon: 'img/ic_show_chart_black_24px.svg',
+                state: 'user.statistics'
             },
             {
                 label: 'Downloads',
@@ -44,11 +44,7 @@ angular.module('200mins-web').controller('UserCtrl', ['$rootScope', '$scope', '$
             }
         ];
 
-        $scope.tabs.forEach(function(tab, i){
-            if(tab.state === $state.current.name){
-                $scope.activeTab = i;
-            }
-        });
+        $scope.updateActiveTab();
 
         $scope.username = $stateParams.username;
 
@@ -57,6 +53,16 @@ angular.module('200mins-web').controller('UserCtrl', ['$rootScope', '$scope', '$
     $scope.changeTab = function (i) {
 
         $rootScope.changeState($scope.tabs[i].state, { username: $rootScope.user.username });
+
+    };
+
+    $scope.updateActiveTab = function(){
+
+        $scope.tabs.forEach(function(tab, i){
+            if(tab.state === $state.current.name){
+                $scope.activeTab = i;
+            }
+        });
 
     };
 

@@ -13,11 +13,13 @@ angular.module('200mins-web').controller('DownloadsCtrl', ['$scope', 'userServic
 
             $scope.activities = [];
 
-            $scope.getLikes();
+            $scope.updateActiveTab();
+
+            $scope.getDownloads();
 
         };
 
-        $scope.getLikes = function () {
+        $scope.getDownloads = function () {
 
             userService.getMovieDownload($scope.username).then(function (response) {
 
@@ -44,8 +46,7 @@ angular.module('200mins-web').controller('DownloadsCtrl', ['$scope', 'userServic
                 }
 
             });
-
-        };
+        }
 
         /* --- RUN --- */
 

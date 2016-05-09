@@ -90,3 +90,11 @@ h1 {
 .label-img {
   margin-right: 5px;
   vertical-align: middle; }
+
+.mini-movie-card {
+  width: 115px; }
+
+.mini-movie-card md-card-content {
+  color: #757575;
+  font-size: 12px;
+  padding: 7.5px; }

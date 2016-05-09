@@ -13,11 +13,13 @@ angular.module('200mins-web').controller('WatchLaterCtrl', ['$scope', 'userServi
 
             $scope.activities = [];
 
-            $scope.getLikes();
+            $scope.updateActiveTab();
+
+            $scope.getWatchLater();
 
         };
 
-        $scope.getLikes = function () {
+        $scope.getWatchLater = function () {
 
             userService.getMovieWatchLater($scope.username).then(function (response) {
 

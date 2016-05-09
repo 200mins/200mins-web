@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('200mins-web').controller('ActivityCtrl', ['$scope', 'userService', 'utilityService', function ($scope, userService, utilityService) {
+angular.module('200mins-web').controller('StatisticsCtrl', ['$scope', 'userService', 'utilityService', function ($scope, userService, utilityService) {
 
         /* --- MODELS --- */
 
@@ -10,7 +10,7 @@ angular.module('200mins-web').controller('ActivityCtrl', ['$scope', 'userService
 
         $scope.initialize = function () {
 
-
+                $scope.updateActiveTab();
 
         };
 

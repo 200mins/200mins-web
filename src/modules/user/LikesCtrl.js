@@ -15,6 +15,8 @@ angular.module('200mins-web').controller('LikesCtrl', ['$scope', 'userService', 
 
             $scope.getLikes();
 
+            $scope.updateActiveTab();
+
         };
 
         $scope.getLikes = function () {

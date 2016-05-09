@@ -44,10 +44,10 @@ angular.module('200mins-web').config(['$compileProvider', '$mdThemingProvider', 
                     url: '/user/:username'
                 })
 
-                .state('user.activity', {
-                    controller: 'ActivityCtrl',
-                    templateUrl: 'modules/user/activity.html',
-                    url: ''
+                .state('user.statistics', {
+                    controller: 'StatisticsCtrl',
+                    templateUrl: 'modules/user/statistics.html',
+                    url: '/statistics'
                 })
 
                 .state('user.downloads', {

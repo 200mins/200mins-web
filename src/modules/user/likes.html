@@ -1,3 +1,10 @@
-<md-card ng-repeat="activity in activities">
-    {{activity.movie.title}}
-</md-card>
+<div layout="row" layout-wrap layout-align="space-around start">
+
+
+    <md-card class="mini-movie-card" ng-repeat="activity in activities">
+        <img ng-src={{activity.movie.coverURL}} class="md-card-image">
+        <md-card-content>
+            <span>Liked <strong>~{{$root.getTimeStringFromNow(activity.createdAt)}}</strong></span>
+        </md-card-content>
+    </md-card>
+</div>
