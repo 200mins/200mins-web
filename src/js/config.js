@@ -1,12 +1,17 @@
 'use strict';
 
-angular.module('200mins-web').config(['$compileProvider', '$mdThemingProvider', '$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function ($compileProvider, $mdThemingProvider, $stateProvider, $urlRouterProvider, localStorageServiceProvider) {
+angular.module('200mins-web').config(['$compileProvider', '$locationProvider', '$mdThemingProvider', '$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function ($compileProvider, $locationProvider, $mdThemingProvider, $stateProvider, $urlRouterProvider, localStorageServiceProvider) {
 
         $compileProvider.debugInfoEnabled(false);
 
         $mdThemingProvider.theme('default')
                 .primaryPalette('pink')
                 .accentPalette('indigo');
+
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
 
         $urlRouterProvider.otherwise('/');
 
