@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('200mins-web').config(['$compileProvider', '$locationProvider', '$mdThemingProvider', '$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function ($compileProvider, $locationProvider, $mdThemingProvider, $stateProvider, $urlRouterProvider, localStorageServiceProvider) {
+angular.module('200mins-web').config(['ENV', '$compileProvider', '$locationProvider', '$mdThemingProvider', '$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function (ENV, $compileProvider, $locationProvider, $mdThemingProvider, $stateProvider, $urlRouterProvider, localStorageServiceProvider) {
 
         $compileProvider.debugInfoEnabled(false);
 
@@ -8,7 +8,11 @@ angular.module('200mins-web').config(['$compileProvider', '$locationProvider', '
                 .primaryPalette('pink')
                 .accentPalette('indigo');
 
-        $locationProvider.html5Mode(true);
+        if (ENV === 'PROD') {
+
+            $locationProvider.html5Mode(true);
+
+        }
 
         $urlRouterProvider.otherwise('/');
 
