@@ -8,10 +8,7 @@ angular.module('200mins-web').config(['$compileProvider', '$locationProvider', '
                 .primaryPalette('pink')
                 .accentPalette('indigo');
 
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false
-        });
+        $locationProvider.html5Mode(true);
 
         $urlRouterProvider.otherwise('/');
 
