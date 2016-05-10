@@ -5,7 +5,6 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
     /* --- MODELS --- */
 
     // $rootScope.apiURL;
-    // $rootScope.base;
     // $rootScope.isUserInitialized;
     // $rootScope.nascent;
     // $rootScope.token;
@@ -90,8 +89,6 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
 
         $rootScope.apiURL = CONFIG[ENV]['domain'] + ':' + CONFIG[ENV]['port'] + '/';
 
-        $rootScope.base = CONFIG[ENV]['base'];
-        
         $rootScope.isUserInitialized = false;
 
         $rootScope.nascent = false;
