@@ -21,7 +21,7 @@ angular.module('200mins-web').controller('WatchedCtrl', ['$scope', 'userService'
 
         $scope.getWatched = function () {
 
-            userService.getMovieWatched($scope.user.username).then(function (response) {
+            userService.getMovieMarkWatched($scope.user.username).then(function (response) {
 
                 if (typeof response === 'undefined') {
 

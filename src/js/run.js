@@ -2,179 +2,187 @@
 
 angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$mdDialog', '$mdSidenav', '$q', '$rootScope', '$state', '$window', 'localStorageService', 'utilityService', function (CONFIG, ENV, VERSION, $location, $mdDialog, $mdSidenav, $q, $rootScope, $state, $window, localStorageService, utilityService) {
 
-    /* --- MODELS --- */
+        /* --- MODELS --- */
 
-    // $rootScope.apiURL;
-    // $rootScope.isUserInitialized;
-    // $rootScope.nascent;
-    // $rootScope.token;
-    // $rootScope.user;
+        // $rootScope.apiURL;
+        // $rootScope.isUserInitialized;
+        // $rootScope.nascent;
+        // $rootScope.token;
+        // $rootScope.user;
 
-    /* --- FUNCTIONS --- */
+        /* --- FUNCTIONS --- */
 
-    $rootScope.changeState = function (state, params) {
+        $rootScope.changeState = function (state, params) {
 
-        if (typeof params === 'undefined') {
+            if (typeof params === 'undefined') {
 
-            $state.go(state);
+                $state.go(state);
 
-        } else {
+            } else {
 
-            $state.go(state, params);
-
-        }
-
-    };
-
-    $rootScope.changeURL = function (url, newTab) {
-
-        newTab = newTab ? '_blank' : '_self';
-
-        $window.open(url, newTab);
-
-    };
-
-    $rootScope.closeSidenav = function () {
-
-        $mdSidenav('sidenav').close();
-
-    };
-
-    $rootScope.logout = function (isSilent) {
-
-        localStorageService.remove('token');
-
-        localStorageService.remove('user');
-
-        $rootScope.isUserInitialized = false;
-
-        $rootScope.initializeUser();
-
-        if (!isSilent) {
-
-            utilityService.notify('Logging you out...');
-
-        }
-
-    };
-
-    $rootScope.openSidenav = function () {
-
-        $mdSidenav('sidenav').open();
-
-    };
-
-    $rootScope.setNascentState = function (bool) {
-
-        $rootScope.nascent = bool;
-
-    };
-
-    $rootScope.showLoginDialog = function (e) {
-
-        $mdDialog.show({
-            controller: 'LoginCtrl',
-            templateUrl: 'modules/user/login-dialog.html',
-            parent: angular.element(document.body),
-            targetEvent: e,
-            clickOutsideToClose: true,
-            openFrom: '#login-dialog-spawn',
-            closeTo: '#login-dialog-spawn'
-
-        });
-
-    };
-
-    $rootScope.initialize = function () {
-
-        $rootScope.apiURL = CONFIG[ENV]['domain'] + ':' + CONFIG[ENV]['port'] + '/';
-
-        $rootScope.isUserInitialized = false;
-
-        $rootScope.nascent = false;
-
-        $rootScope.token = null;
-
-        $rootScope.user = null;
-
-        var version = localStorageService.get('version');
-
-        if (version !== VERSION) {
-
-            localStorageService.clearAll();
-
-            if (!localStorageService.set('version', VERSION)) {
-
-                utilityService.notify('Couldn\'t initialize app properly.');
+                $state.go(state, params);
 
             }
 
-        }
+        };
 
-        $rootScope.initializeUser();
+        $rootScope.changeURL = function (url, newTab) {
 
-    };
+            newTab = newTab ? '_blank' : '_self';
 
-    $rootScope.getTimeStringFromNow = function(d){
+            $window.open(url, newTab);
 
-        return moment(d).fromNow();
+        };
 
-    };
+        $rootScope.closeSidenav = function () {
 
-    $rootScope.initializeUser = function (isSilent) {
+            $mdSidenav('sidenav').close();
 
-        return $q(function (resolve, reject) {
+        };
 
-            if (!$rootScope.isUserInitialized) {
+        $rootScope.logout = function (isSilent) {
 
-                var token = localStorageService.get('token');
+            localStorageService.remove('token');
 
-                var user = localStorageService.get('user');
+            localStorageService.remove('user');
 
-                if (token === null || user === null) {
+            $rootScope.isUserInitialized = false;
 
-                    $rootScope.token = null;
+            $rootScope.initializeUser();
 
-                    $rootScope.user = null;
+            if (!isSilent) {
 
-                    reject();
+                utilityService.notify('Logging you out...');
+
+            }
+
+        };
+
+        $rootScope.openSidenav = function () {
+
+            $mdSidenav('sidenav').open();
+
+        };
+
+        $rootScope.setNascentState = function (bool) {
+
+            $rootScope.nascent = bool;
+
+        };
+
+        $rootScope.showLoginDialog = function (e) {
+
+            $mdDialog.show({
+                controller: 'LoginCtrl',
+                templateUrl: 'modules/user/login-dialog.html',
+                parent: angular.element(document.body),
+                targetEvent: e,
+                clickOutsideToClose: true,
+                openFrom: '#login-dialog-spawn',
+                closeTo: '#login-dialog-spawn'
+
+            });
+
+        };
+
+        $rootScope.initialize = function () {
+
+            $rootScope.apiURL = CONFIG[ENV]['domain'] + ':' + CONFIG[ENV]['port'] + '/';
+
+            $rootScope.isUserInitialized = false;
+
+            $rootScope.nascent = false;
+
+            $rootScope.token = null;
+
+            $rootScope.user = null;
+
+            var version = localStorageService.get('version');
+
+            if (version !== VERSION) {
+
+                localStorageService.clearAll();
+
+                if (!localStorageService.set('version', VERSION)) {
+
+                    utilityService.notify('Couldn\'t initialize app properly.');
+
+                }
+
+            }
+
+            $rootScope.initializeUser();
+
+        };
+
+        $rootScope.getTimeStringFromNow = function (d) {
+
+            return moment(d).fromNow();
+
+        };
+
+        $rootScope.initializeUser = function (isSilent) {
+
+            return $q(function (resolve, reject) {
+
+                if (!$rootScope.isUserInitialized) {
+
+                    var token = localStorageService.get('token');
+
+                    var user = localStorageService.get('user');
+
+                    if (token === null || user === null) {
+
+                        $rootScope.token = null;
+
+                        $rootScope.user = null;
+
+                        reject();
+
+                    } else {
+
+                        $rootScope.token = token;
+
+                        $rootScope.user = user;
+
+                        $rootScope.isUserInitialized = true;
+
+                        if (typeof sessionStorage.isWelcomed === 'undefined') {
+
+                            utilityService.notify('Hi ' + user.username + '!');
+
+                            sessionStorage.isWelcomed = true;
+
+                        }
+
+                        resolve();
+
+                    }
 
                 } else {
-
-                    $rootScope.token = token;
-
-                    $rootScope.user = user;
-
-                    $rootScope.isUserInitialized = true;
 
                     resolve();
 
                 }
 
-            } else {
+            });
 
-                resolve();
+        };
+
+        /* --- RUN --- */
+
+        $rootScope.$on('$stateChangeSuccess', function () {
+
+            $rootScope.closeSidenav();
+
+            if (ENV === 'PROD') {
+
+                window.ga('send', 'pageview', {page: $location.path()});
 
             }
 
         });
 
-    };
+        $rootScope.initialize();
 
-    /* --- RUN --- */
-
-    $rootScope.$on('$stateChangeSuccess', function () {
-
-        $rootScope.closeSidenav();
-
-        if (ENV === 'PROD') {
-
-            window.ga('send', 'pageview', { page: $location.path() });
-
-        }
-
-    });
-
-    $rootScope.initialize();
-
-}]);
+    }]);

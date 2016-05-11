@@ -17,7 +17,7 @@
             <span>Filters</span>
         </div>
     </md-list-item>
-    
+
     <!-- Search -->
     <md-list-item ng-click="$root.changeState('search')">
         <img ng-src="img/ic_search_black_24px.svg" class="sidenav-icon" alt="Search" />
@@ -28,79 +28,83 @@
 
     <md-divider ></md-divider>
 
-    <md-subheader class="md-no-sticky">Your Activity</md-subheader>
+    <section ng-hide="$root.user === null">
 
-    <md-list-item ng-click="$root.changeState('user.watch-later', {username: $root.user.username})">
-        <img ng-src="img/ic_watch_later_black_24px.svg" class="sidenav-icon" alt="Watch Later" />
-        <div class="md-list-item-text">
-            <span>Watch Later</span>
-        </div>
-    </md-list-item>
+        <md-subheader class="md-no-sticky">Your Activity</md-subheader>
 
-    <md-list-item ng-click="$root.changeState('user.likes', {username: $root.user.username})">
-        <img ng-src="img/ic_favorite_black_24px.svg" class="sidenav-icon" alt="Liked" />
-        <div class="md-list-item-text">
-            <span>Liked</span>
-        </div>
-    </md-list-item>
+        <md-list-item ng-click="$root.changeState('user.watch-later', {username: $root.user.username})">
+            <img ng-src="img/ic_watch_later_black_24px.svg" class="sidenav-icon" alt="Watch Later" />
+            <div class="md-list-item-text">
+                <span>Watch Later</span>
+            </div>
+        </md-list-item>
 
-    <md-list-item ng-click="$root.changeState('user.watched', {username: $root.user.username})">
-        <img ng-src="img/ic_visibility_black_24px.svg" class="sidenav-icon" alt="Watched" />
-        <div class="md-list-item-text">
-            <span>Watched</span>
-        </div>
-    </md-list-item>
+        <md-list-item ng-click="$root.changeState('user.likes', {username: $root.user.username})">
+            <img ng-src="img/ic_favorite_black_24px.svg" class="sidenav-icon" alt="Liked" />
+            <div class="md-list-item-text">
+                <span>Liked</span>
+            </div>
+        </md-list-item>
 
-    <md-list-item ng-click="$root.changeState('user.downloads', {username: $root.user.username})">
-        <img ng-src="img/ic_cloud_download_black_24px.svg" class="sidenav-icon" alt="Watched" />
-        <div class="md-list-item-text">
-            <span>Downloads</span>
-        </div>
-    </md-list-item>
+        <md-list-item ng-click="$root.changeState('user.watched', {username: $root.user.username})">
+            <img ng-src="img/ic_visibility_black_24px.svg" class="sidenav-icon" alt="Watched" />
+            <div class="md-list-item-text">
+                <span>Watched</span>
+            </div>
+        </md-list-item>
 
-    <md-list-item ng-click="$root.changeState('user.plays', {username: $root.user.username})">
-        <img ng-src="img/ic_play_arrow_black_24px.svg" class="sidenav-icon" alt="Watched" />
-        <div class="md-list-item-text">
-            <span>Plays</span>
-        </div>
-    </md-list-item>
+        <md-list-item ng-click="$root.changeState('user.downloads', {username: $root.user.username})">
+            <img ng-src="img/ic_cloud_download_black_24px.svg" class="sidenav-icon" alt="Watched" />
+            <div class="md-list-item-text">
+                <span>Downloads</span>
+            </div>
+        </md-list-item>
 
-    <md-divider ></md-divider>
+        <md-list-item ng-click="$root.changeState('user.plays', {username: $root.user.username})">
+            <img ng-src="img/ic_play_arrow_black_24px.svg" class="sidenav-icon" alt="Watched" />
+            <div class="md-list-item-text">
+                <span>Plays</span>
+            </div>
+        </md-list-item>
+
+        <md-divider ></md-divider>
+
+    </section>
 
     <md-subheader class="md-no-sticky">200mins</md-subheader>
 
     <md-list-item ng-click="null">
         <img ng-src="img/ic_bug_report_black_24px.svg" class="sidenav-icon" alt="Report a Problem" />
         <div class="md-list-item-text">
-            <span>Report a Problem</span>
+            <span>Report a Problem</span><small style="color: grey; font-size: 10px;"> [WIP]</small>
         </div>
     </md-list-item>
 
     <md-list-item ng-click="null">
         <img ng-src="img/ic_lightbulb_outline_black_24px.svg" class="sidenav-icon" alt="Suggest a Feature" />
         <div class="md-list-item-text">
-            <span>Suggest a Feature</span>
+            <span>Suggest a Feature</span><small style="color: grey; font-size: 10px;"> [WIP]</small>
         </div>
     </md-list-item>
 
     <md-list-item ng-click="null">
         <img ng-src="img/ic_fingerprint_black_24px.svg" class="sidenav-icon" alt="Privacy & Terms of Use" />
         <div class="md-list-item-text">
-            <span>Privacy & Terms of Use</span>
+            <span>Privacy & Terms of Use</span><small style="color: grey; font-size: 10px;"> [WIP]</small>
         </div>
     </md-list-item>
 
     <md-list-item ng-click="null">
         <img ng-src="img/ic_account_balance_black_24px.svg" class="sidenav-icon" alt="DMCA & Legal" />
         <div class="md-list-item-text">
-            <span>DMCA & Legal</span>
+            <span>DMCA & Legal</span><small style="color: grey; font-size: 10px;"> [WIP]</small>
         </div>
     </md-list-item>
 
     <md-list-item ng-click="null">
         <img ng-src="img/ic_pets_black_24px.svg" class="sidenav-icon" alt="Credits" />
         <div class="md-list-item-text">
-            <span>Credits</span>
+            <span>Credits</span><small style="color: grey; font-size: 10px;"> [WIP]</small>
         </div>
     </md-list-item>
 

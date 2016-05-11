@@ -53,8 +53,6 @@ angular.module('200mins-web').controller('LoginCtrl', ['$mdDialog', '$rootScope'
 
                                     $mdDialog.hide();
 
-                                    utilityService.notify('Hi ' + response.data.user.username + '!');
-
                                 }, function () {
 
                                     utilityService.notify('Couldn\'t log you in.');
@@ -131,8 +129,6 @@ angular.module('200mins-web').controller('LoginCtrl', ['$mdDialog', '$rootScope'
                                         $rootScope.initializeUser().then(function () {
 
                                             $mdDialog.hide();
-
-                                            utilityService.notify('Hi ' + response.data.user.username + '!');
 
                                         }, function () {
 
