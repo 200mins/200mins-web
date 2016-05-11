@@ -22,15 +22,19 @@
 
             <section ng-show="selectedMovie.id !== movie.id" layout="row" layout-align="space-between center" flex>
                 <md-button ng-click="$root.changeURL('http://www.imdb.com/title/' + movie.imdb_code + '/', true)" class="small-button no-margin" aria-label="IMDb Rating">
+                    <md-tooltip md-direction="top">IMDb Page</md-tooltip>
                     <img class="png-icon" src="img/imdb.png">&nbsp;<span>{{movie.rating| number : 1}}</span>
                 </md-button>
-                <md-button ng-disabled="true" style="color: black !important;" class="small-button no-margin" aria-label="Year">
+                <md-button ng-disabled="false" style="color: black !important;" class="small-button no-margin" aria-label="Year">
+                    <md-tooltip md-direction="top">Year Released</md-tooltip>
                     <md-icon md-svg-src="img/ic_date_range_black_24px.svg"></md-icon>&nbsp;<span>{{movie.year}}</span>
                 </md-button>
                 <md-button class="md-icon-button no-margin" aria-label="Download" ng-click="selectMovie(movie.id, 'download')">
+                    <md-tooltip md-direction="top">Download Torrent</md-tooltip>
                     <md-icon md-svg-src="img/ic_cloud_download_black_24px.svg"></md-icon>
                 </md-button>
                 <md-button class="md-icon-button no-margin" aria-label="Play" ng-click="selectMovie(movie.id, 'stream')">
+                    <md-tooltip md-direction="top">Play via Magnet</md-tooltip>
                     <md-icon md-svg-src="img/ic_play_arrow_black_24px.svg"></md-icon>
                 </md-button>
             </section>

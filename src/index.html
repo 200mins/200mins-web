@@ -61,12 +61,15 @@
                 <a ui-sref="home">200mins</a>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="$root.changeState('search')" aria-label="Search">
+                    <md-tooltip>Search</md-tooltip>
                     <md-icon md-svg-src="img/ic_search_white_24px.svg"></md-icon>
                 </md-button>
                 <md-button ng-if="$root.user === null" class="md-icon-button" ng-click="$root.showLoginDialog($event)" aria-label="Show Login Dialog">
+                    <md-tooltip>Login</md-tooltip>
                     <md-icon md-svg-src="img/ic_account_circle_white_24px.svg"></md-icon>
                 </md-button>
                 <md-button ng-if="$root.user !== null" class="md-icon-button" ng-click="$root.logout()" aria-label="Logout">
+                    <md-tooltip>Logout</md-tooltip>
                     <md-icon md-svg-src="img/ic_account_circle_white_24px.svg"></md-icon>
                 </md-button>
             </div>
