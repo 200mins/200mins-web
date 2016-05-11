@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', '$state', 'activityService', 'localStorageService', 'movieService', 'utilityService', function ($rootScope, $scope, $state, activityService, localStorageService, movieService, utilityService) {
+angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', '$state', 'activityService', 'localStorageService', 'proxyService', 'utilityService', function ($rootScope, $scope, $state, activityService, localStorageService, proxyService, utilityService) {
 
         /* --- MODELS --- */
 
@@ -102,7 +102,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
             $scope.isNascent = true;
 
-            movieService.getListMovies($scope.getMoviesParams).then(function (response) {
+            proxyService.getListMovies($scope.getMoviesParams).then(function (response) {
 
                 if (response && response.status === 200) {
 

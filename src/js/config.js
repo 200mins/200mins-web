@@ -25,6 +25,12 @@ angular.module('200mins-web').config(['ENV', '$compileProvider', '$locationProvi
                     templateUrl: 'modules/filters/filters.html',
                     url: '/filters'
                 })
+                
+                .state('search', {
+                    controller: 'SearchCtrl',
+                    templateUrl: 'modules/search/search.html',
+                    url: '/search?q'
+                })
 
                 .state('home', {
                     controller: 'HomeCtrl',

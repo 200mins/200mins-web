@@ -1,0 +1,58 @@
+<md-card>
+    <md-card-content>
+        <input type="text" ng-change="search()" ng-model="query">
+    </md-card-content>
+</md-card>
+
+<div layout="row" layout-wrap layout-align="space-around start" style="padding-top: 10px;">
+
+    <md-card class="movie-card" ng-repeat="movie in suggestions">
+
+        <!-- Poster -->
+        <img style="cursor: pointer;" ng-src="{{movie.medium_cover_image}}" class="md-card-image" alt="{{movie.title}}" ng-click="showMovieDetails(movie.id)">
+
+        <!-- Actions -->
+        <md-card-actions layout="row">
+
+            <section ng-show="selectedMovie.id !== movie.id" layout="row" layout-align="space-between center" flex>
+                <md-button ng-click="$root.changeURL('http://www.imdb.com/title/' + movie.imdb_code + '/', true)" class="small-button no-margin" aria-label="IMDb Rating">
+                    <img class="png-icon" src="img/imdb.png">&nbsp;<span>{{movie.rating| number : 1}}</span>
+                </md-button>
+                <md-button ng-disabled="true" style="color: black !important;" class="small-button no-margin" aria-label="Year">
+                    <md-icon md-svg-src="img/ic_date_range_black_24px.svg"></md-icon>&nbsp;<span>{{movie.year}}</span>
+                </md-button>
+                <md-button class="md-icon-button no-margin" aria-label="Download" ng-click="selectMovie(movie.id, 'download')">
+                    <md-icon md-svg-src="img/ic_cloud_download_black_24px.svg"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button no-margin" aria-label="Play" ng-click="selectMovie(movie.id, 'stream')">
+                    <md-icon md-svg-src="img/ic_play_arrow_black_24px.svg"></md-icon>
+                </md-button>
+            </section>
+
+            <section ng-show="selectedMovie.id === movie.id" layout="row" flex>
+
+                <section>
+                    <md-button class="md-icon-button no-margin" aria-label="Close" ng-click="resetSelectedMovie()">
+                        <md-icon md-svg-src="img/ic_close_black_24px.svg"></md-icon>
+                    </md-button>
+                </section>
+
+                <section flex layout="row" layout-align="end center" ng-show="selectedMovie.intention === 'download'">
+                    <md-button ng-repeat="torrent in movie.torrents" class="md-primary small-button" ng-click="movieDownload(movie.imdb_code, torrent, $event)">
+                        <span>{{torrent.quality}}</span>
+                    </md-button>
+                </section>
+
+                <section flex layout="row" layout-align="end center" ng-show="selectedMovie.intention === 'stream'">
+                    <md-button ng-repeat="torrent in movie.torrents" class="md-primary small-button" ng-click="moviePlay(movie, torrent, $event)">
+                        <span>{{torrent.quality}}</span>
+                    </md-button>
+                </section>
+
+            </section>
+
+        </md-card-actions>
+
+    </md-card>
+
+</div>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '$stateParams', 'activityService', 'movieService', 'utilityService', function ($rootScope, $scope, $stateParams, activityService, movieService, utilityService) {
+angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '$stateParams', 'activityService', 'movieService', 'proxyService', 'utilityService', function ($rootScope, $scope, $stateParams, activityService, movieService, proxyService, utilityService) {
 
         /* --- MODELS --- */
 
@@ -30,7 +30,7 @@ angular.module('200mins-web').controller('MovieCtrl', ['$rootScope', '$scope', '
 
             $rootScope.setNascentState(true);
 
-            movieService.getMovieDetails($scope.getMovieParams).then(function (response) {
+            proxyService.getMovieDetails($scope.getMovieParams).then(function (response) {
 
                 switch (response.status) {
 

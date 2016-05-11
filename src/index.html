@@ -1,8 +1,10 @@
-<html ng-app="200mins-web" ng-strict-di>
+<html lang="en" ng-app="200mins-web" ng-strict-di>
 
     <head>
 
         <base href="/" />
+        
+        <link rel="search" type="application/opensearchdescription+xml" title="200mins" href="search.xml" />
 
         <title>200mins</title>
         <link rel="icon" href="favicon.ico" />
@@ -60,6 +62,9 @@
                 </md-button>
                 <a ui-sref="home">200mins</a>
                 <span flex></span>
+                <md-button class="md-icon-button" ng-click="$root.changeState('search')" aria-label="Search">
+                    <md-icon md-svg-src="img/ic_search_white_24px.svg"></md-icon>
+                </md-button>
                 <md-button ng-if="$root.user === null" class="md-icon-button" ng-click="$root.showLoginDialog($event)" aria-label="Show Login Dialog">
                     <md-icon md-svg-src="img/ic_account_circle_white_24px.svg"></md-icon>
                 </md-button>
@@ -124,6 +129,7 @@
     <script src="modules/services/movieService.js"></script>
     <script src="modules/services/userService.js"></script>
     <script src="modules/services/utilityService.js"></script>
+    <script src="modules/services/proxyService.js"></script>
 
     <script src="modules/user/StatisticsCtrl.js"></script>
     <script src="modules/user/DownloadsCtrl.js"></script>
@@ -132,6 +138,7 @@
     <script src="modules/user/WatchLaterCtrl.js"></script>
     <script src="modules/user/WatchedCtrl.js"></script>
     <script src="modules/user/UserCtrl.js"></script>
+    <script src="modules/search/SearchCtrl.js"></script>
 
     <script src="modules/user/LoginCtrl.js"></script>
 
