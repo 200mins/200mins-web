@@ -71,6 +71,12 @@ angular.module('200mins-web').controller('LoginCtrl', ['$mdDialog', '$rootScope'
 
                             break;
 
+                        case 404:
+
+                            utilityService.notify(response.data);
+
+                            break;
+
                         default:
 
                             utilityService.notify('Service is down.');
@@ -118,13 +124,15 @@ angular.module('200mins-web').controller('LoginCtrl', ['$mdDialog', '$rootScope'
 
                             switch (response.status) {
 
-                                case 200:
+                                case 201:
 
                                     if (localStorageService.set('token', response.data.token) && localStorageService.set('user', response.data.user)) {
 
                                         $rootScope.initializeUser().then(function () {
 
                                             $mdDialog.hide();
+
+                                            utilityService.notify('Hi ' + response.data.user.username + '!');
 
                                         }, function () {
 
