@@ -60,7 +60,7 @@ angular.module('200mins-web').controller('UserCtrl', ['$rootScope', '$scope', '$
 
         $scope.getUser = function () {
 
-            userService.getUser($scope.user.username).then(function (response) {
+            userService.getByUsername($scope.user.username).then(function (response) {
 
                 if (!response) {
 

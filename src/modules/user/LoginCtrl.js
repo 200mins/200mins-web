@@ -35,7 +35,7 @@ angular.module('200mins-web').controller('LoginCtrl', ['$mdDialog', '$rootScope'
                 password: md5.createHash($scope.credentials.password)
             };
 
-            userService.login($scope.credentials.username, params).then(function (response) {
+            userService.getSession($scope.credentials.username, params).then(function (response) {
 
                 if (typeof response === 'undefined') {
 
@@ -108,7 +108,7 @@ angular.module('200mins-web').controller('LoginCtrl', ['$mdDialog', '$rootScope'
                     data.city = response.data.city;
                     data.countryCode = response.data.countryCode;
 
-                    userService.register(data).then(function (response) {
+                    userService.create(data).then(function (response) {
 
                         if (typeof response === 'undefined') {
 

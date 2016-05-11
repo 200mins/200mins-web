@@ -1,6 +1,9 @@
 h1 {
   margin: 0; }
 
+svg {
+  color: black; }
+
 .blink {
   animation: blink 1s linear infinite; }
 

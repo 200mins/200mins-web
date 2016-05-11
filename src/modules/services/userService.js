@@ -1,271 +1,285 @@
 'use strict';
 
-angular.module('200mins-web').service('userService', ['ENV', '$http', '$rootScope', 'localStorageService', 'utilityService', function (ENV, $http, $rootScope, localStorageService, utilityService) {
+angular
 
-        this.getMovieLike = function (username) {
+        .module('200mins-web')
 
-            return $http.get($rootScope.apiURL + 'user/' + username + '/movie-like').then(function (response) {
+        .service('userService', ['ENV', '$http', '$rootScope', 'localStorageService', 'utilityService', function (ENV, $http, $rootScope, localStorageService, utilityService) {
 
-                if (ENV !== 'PROD') {
+                /* --- 200mins API Services --- */
 
-                    console.info('getMovieLike: ', response);
+                this.create = function (data) {
 
-                }
+                    return $http.post($rootScope.apiURL + 'user', data).then(function (response) {
 
-                return response;
+                        if (ENV !== 'PROD') {
 
-            }, function (err) {
+                            console.info('create: ', response);
 
-                if (ENV !== 'PROD') {
+                        }
 
-                    console.warn('getMovieLike: ', err);
+                        // 201
+                        return response;
 
-                }
+                    }, function (err) {
 
-                return err;
+                        if (ENV !== 'PROD') {
 
-            });
+                            console.warn('create: ', err);
 
-        };
+                        }
 
-        this.getMovieDownload = function (username) {
+                        // 400 || 403 || 500
+                        return err;
 
-            return $http.get($rootScope.apiURL + 'user/' + username + '/movie-download').then(function (response) {
+                    });
 
-                if (ENV !== 'PROD') {
+                };
 
-                    console.info('getMovieDownload: ', response);
+                this.getByUsername = function (username) {
 
-                }
+                    return $http.get($rootScope.apiURL + 'user/' + username).then(function (response) {
 
-                return response;
+                        if (ENV !== 'PROD') {
 
-            }, function (err) {
+                            console.info('getByUsername: ', response);
 
-                if (ENV !== 'PROD') {
+                        }
 
-                    console.warn('getMovieDownload: ', err);
+                        // 200
+                        return response;
 
-                }
+                    }, function (err) {
 
-                return err;
+                        if (ENV !== 'PROD') {
 
-            });
+                            console.warn('getByUsername: ', err);
 
-        };
+                        }
 
-        this.getMoviePlay = function (username) {
+                        // 400 || 403 || 500    
+                        return err;
 
-            return $http.get($rootScope.apiURL + 'user/' + username + '/movie-play').then(function (response) {
+                    });
 
-                if (ENV !== 'PROD') {
+                };
 
-                    console.info('getMoviePlay: ', response);
+                this.getMovieDownload = function (username) {
 
-                }
+                    return $http.get($rootScope.apiURL + 'user/' + username + '/movie-download').then(function (response) {
 
-                return response;
+                        if (ENV !== 'PROD') {
 
-            }, function (err) {
+                            console.info('getMovieDownload: ', response);
 
-                if (ENV !== 'PROD') {
+                        }
 
-                    console.warn('getMoviePlay: ', err);
+                        // 200
+                        return response;
 
-                }
+                    }, function (err) {
 
-                return err;
+                        if (ENV !== 'PROD') {
 
-            });
+                            console.warn('getMovieDownload: ', err);
 
-        };
+                        }
 
-        this.getMovieWatched = function (username) {
+                        // 500    
+                        return err;
 
-            return $http.get($rootScope.apiURL + 'user/' + username + '/movie-mark-watched').then(function (response) {
+                    });
 
-                if (ENV !== 'PROD') {
+                };
 
-                    console.info('getMovieWatched: ', response);
+                this.getMovieLike = function (username) {
 
-                }
+                    return $http.get($rootScope.apiURL + 'user/' + username + '/movie-like').then(function (response) {
 
-                return response;
+                        if (ENV !== 'PROD') {
 
-            }, function (err) {
+                            console.info('getMovieLike: ', response);
 
-                if (ENV !== 'PROD') {
+                        }
 
-                    console.warn('getMovieWatched: ', err);
+                        return response;
 
-                }
+                    }, function (err) {
 
-                return err;
+                        if (ENV !== 'PROD') {
 
-            });
+                            console.warn('getMovieLike: ', err);
 
-        };
+                        }
 
-        this.getMovieWatchLater = function (username) {
+                        return err;
 
-            return $http.get($rootScope.apiURL + 'user/' + username + '/movie-mark-watch-later').then(function (response) {
+                    });
 
-                if (ENV !== 'PROD') {
+                };
 
-                    console.info('getMovieWatchLater: ', response);
+                this.getMovieMarkWatchLater = function (username) {
 
-                }
+                    return $http.get($rootScope.apiURL + 'user/' + username + '/movie-mark-watch-later').then(function (response) {
 
-                return response;
+                        if (ENV !== 'PROD') {
 
-            }, function (err) {
+                            console.info('getMovieWatchLater: ', response);
 
-                if (ENV !== 'PROD') {
+                        }
 
-                    console.warn('getMovieWatchLater: ', err);
+                        return response;
 
-                }
+                    }, function (err) {
 
-                return err;
+                        if (ENV !== 'PROD') {
 
-            });
+                            console.warn('getMovieWatchLater: ', err);
 
-        };
+                        }
 
-        this.getLocation = function () {
+                        return err;
 
-            return $http.get('http://ip-api.com/json').then(function (response) {
+                    });
 
-                if (ENV !== 'PROD') {
+                };
 
-                    console.info('getLocation: ', response);
+                this.getMovieMarkWatched = function (username) {
 
-                }
+                    return $http.get($rootScope.apiURL + 'user/' + username + '/movie-mark-watched').then(function (response) {
 
-                return response;
+                        if (ENV !== 'PROD') {
 
-            }, function (err) {
+                            console.info('getMovieWatched: ', response);
 
-                if (ENV !== 'PROD') {
+                        }
 
-                    console.warn('getLocation: ', err);
+                        return response;
 
-                }
+                    }, function (err) {
 
-                return err;
+                        if (ENV !== 'PROD') {
 
-            });
+                            console.warn('getMovieWatched: ', err);
 
-        };
-        
-        this.getUser = function(username){
-            
-            return $http.get($rootScope.apiURL + 'user/' + username).then(function (response) {
+                        }
 
-                if (ENV !== 'PROD') {
+                        return err;
 
-                    console.info('getUser: ', response);
+                    });
 
-                }
+                };
 
-                return response;
+                this.getMoviePlay = function (username) {
 
-            }, function (err) {
+                    return $http.get($rootScope.apiURL + 'user/' + username + '/movie-play').then(function (response) {
 
-                if (ENV !== 'PROD') {
+                        if (ENV !== 'PROD') {
 
-                    console.warn('getUser: ', err);
+                            console.info('getMoviePlay: ', response);
 
-                }
+                        }
 
-                return err;
+                        return response;
 
-            });
-            
-        };
+                    }, function (err) {
 
-        this.login = function (username, params) {
+                        if (ENV !== 'PROD') {
 
-            var config = {params: params};
+                            console.warn('getMoviePlay: ', err);
 
-            return $http.get($rootScope.apiURL + 'user/' + username + '/session', config).then(function (response) {
+                        }
 
-                if (ENV !== 'PROD') {
+                        return err;
 
-                    console.info('login: ', response);
+                    });
 
-                }
+                };
 
-                return response;
+                this.getSession = function (username, params) {
 
-            }, function (err) {
+                    var config = {params: params};
 
-                if (ENV !== 'PROD') {
+                    return $http.get($rootScope.apiURL + 'user/' + username + '/session', config).then(function (response) {
 
-                    console.warn('login: ', err);
+                        if (ENV !== 'PROD') {
 
-                }
+                            console.info('login: ', response);
 
-                return err;
+                        }
 
-            });
+                        return response;
 
-        };
+                    }, function (err) {
 
-        this.register = function (data) {
+                        if (ENV !== 'PROD') {
 
-            return $http.post($rootScope.apiURL + 'user', data).then(function (response) {
+                            console.warn('login: ', err);
 
-                if (ENV !== 'PROD') {
+                        }
 
-                    console.info('register: ', response);
+                        return err;
 
-                }
+                    });
 
-                return response;
+                };
 
-            }, function (err) {
+                /* --- Other Services --- */
 
-                if (ENV !== 'PROD') {
+                this.getLocation = function () {
 
-                    console.warn('register: ', err);
+                    return $http.get('http://ip-api.com/json').then(function (response) {
 
-                }
+                        if (ENV !== 'PROD') {
 
-                return err;
+                            console.info('getLocation: ', response);
 
-            });
+                        }
 
-        };
+                        return response;
 
-        this.updateKarma = function (delta) {
+                    }, function (err) {
 
-            var user = localStorageService.get('user');
+                        if (ENV !== 'PROD') {
 
-            if (user === null) {
+                            console.warn('getLocation: ', err);
 
-                utilityService.notify('Couldn\'t update your karma.');
+                        }
 
-                return;
+                        return err;
 
-            } else {
+                    });
 
-                user.karma += delta;
+                };
 
-                if (localStorageService.set('user', user)) {
+                this.updateKarma = function (delta) {
 
-                    return;
+                    var user = localStorageService.get('user');
 
-                } else {
+                    if (user === null) {
 
-                    utilityService.notify('Couldn\'t update your karma.');
+                        utilityService.notify('Couldn\'t update your karma.');
 
-                    return;
+                        return;
 
-                }
+                    } else {
 
-            }
+                        user.karma += delta;
 
-        };
+                        if (localStorageService.set('user', user)) {
 
-    }]);
+                            return;
+
+                        } else {
+
+                            utilityService.notify('Couldn\'t update your karma.');
+
+                            return;
+
+                        }
+
+                    }
+
+                };
+
+            }]);
