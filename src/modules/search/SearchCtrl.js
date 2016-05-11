@@ -4,6 +4,7 @@ angular.module('200mins-web').controller('SearchCtrl', ['$rootScope', '$scope', 
 
         /* --- Models --- */
 
+        // $scope.isSearchActive;
         // $scope.query;
         // $scope.suggestions;
         // $scope.timeout;
@@ -15,15 +16,19 @@ angular.module('200mins-web').controller('SearchCtrl', ['$rootScope', '$scope', 
             $scope.query = $stateParams.q;
 
             if (typeof $scope.query !== 'undefined') {
+
+                $scope.isSearchActive = true;
                 
                 $scope.timeout = 0;
 
                 $scope.search();
 
             } else {
+                
+                $scope.isSearchActive = false;
 
                 $scope.query = '';
-                
+
                 $scope.timeout = 2000;
 
             }
@@ -33,13 +38,15 @@ angular.module('200mins-web').controller('SearchCtrl', ['$rootScope', '$scope', 
         };
 
         $scope.search = function () {
+            
+            $scope.isSearchActive = true;
 
             $timeout.cancel($scope.searchTimeout);
 
             if ($scope.query.length >= 2) {
-                
-                $scope.searchTimeout = $timeout(function () {
 
+                $scope.searchTimeout = $timeout(function () {
+                    
                     var params = {query_term: $scope.query};
 
                     proxyService.getListMovies(params).then(function (response) {
@@ -66,12 +73,20 @@ angular.module('200mins-web').controller('SearchCtrl', ['$rootScope', '$scope', 
 
                         }
                         
+                        $scope.isSearchActive = false;
+
                         $scope.timeout = 2000;
 
                     });
 
                 }, $scope.timeout);
 
+            } else {
+                
+                $scope.isSearchActive = false;
+                
+                $scope.timeout = 2000;
+                
             }
 
         };
