@@ -16,7 +16,7 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
 
         $scope.initialize = function () {
 
-            $scope.getMoviesParams = {limit: 20, page: 1, sort_by: 'year'};
+            $scope.getMoviesParams = {limit: 20, page: 1};
 
             $scope.isEOC = false;
 
@@ -33,6 +33,14 @@ angular.module('200mins-web').controller('MoviesCtrl', ['$rootScope', '$scope', 
             if ($scope.filters !== null) {
 
                 $scope.getMoviesParams = utilityService.mergeObjects($scope.getMoviesParams, $scope.filters, true);
+
+                delete $scope.filters.order_by;
+                
+                delete $scope.filters.sort_by;
+
+                if (utilityService.isObjectEmpty($scope.filters)) {
+                    $scope.filters = null;
+                }
 
             }
 

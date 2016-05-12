@@ -12,23 +12,29 @@
 
             <section ng-hide="$root.nascent">
                 <md-button ng-click="movieMarkWatchLater(movie.imdb_code, 'true', $event)" aria-label="Mark Watch" class="md-icon-button" ng-show="!movieStatus.isMovieMarkWatchLater">
+                    <md-tooltip>Mark Watch Later</md-tooltip>
                     <md-icon md-svg-src="img/ic_update_black_24px.svg"></md-icon></span>
                 </md-button>
                 <md-button ng-click="movieMarkWatchLater(movie.imdb_code, 'false', $event)" aria-label="Unmark Watch" class="md-icon-button" ng-show="movieStatus.isMovieMarkWatchLater">
+                    <md-tooltip>Unmark Watch Later</md-tooltip>
                     <md-icon md-svg-src="img/ic_watch_later_black_24px.svg"></md-icon></span>
                 </md-button>
 
                 <md-button ng-click="movieMarkWatched(movie.imdb_code, 'true', $event)" aria-label="Mark Watched" class="md-icon-button" ng-show="!movieStatus.isMovieMarkWatched">
+                    <md-tooltip>Mark Watched</md-tooltip>
                     <md-icon md-svg-src="img/ic_visibility_off_black_24px.svg"></md-icon></span>
                 </md-button>
                 <md-button ng-click="movieMarkWatched(movie.imdb_code, 'false', $event)" aria-label="Unmark Watched" class="md-icon-button" ng-show="movieStatus.isMovieMarkWatched">
+                    <md-tooltip>Unmark Watched</md-tooltip>
                     <md-icon md-svg-src="img/ic_visibility_black_24px.svg"></md-icon></span>
                 </md-button>
 
                 <md-button ng-click="movieLike(movie.imdb_code, 'true', $event)" aria-label="Like" class="md-icon-button" ng-show="!movieStatus.isMovieLike">
+                    <md-tooltip>Like</md-tooltip>
                     <md-icon md-svg-src="img/ic_favorite_border_black_24px.svg"></md-icon></span>
                 </md-button>
                 <md-button ng-click="movieLike(movie.imdb_code, 'false', $event)" aria-label="Unlike" class="md-icon-button" ng-show="movieStatus.isMovieLike">
+                    <md-tooltip>Unlike</md-tooltip>
                     <md-icon md-svg-src="img/ic_favorite_black_24px.svg"></md-icon></span>
                 </md-button>
             </section>

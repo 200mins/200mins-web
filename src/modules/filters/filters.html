@@ -16,13 +16,14 @@
     </md-toolbar>
 </div>
 
-<div layout="row" layout-align="center center" style="padding-top: 10px;">
+<div layout="row" layout-align="center center">
 
-    <div flex="75">
+    <div flex="75" style="margin-top: 10px;">
         <!-- Genre -->
         <md-card flex>
             <md-card-header>
-                <span class="md-title">Genre: <span class="capitalize">{{filters.genre}}</span></span>
+                <md-icon md-svg-src="img/ic_local_movies_black_24px.svg"></md-icon>
+                <span flex class="md-title">&nbsp;Genre: <span class="capitalize">{{filters.genre}}</span></span>
             </md-card-header>
             <md-card-content>
                 <md-radio-group ng-model="filters.genre">
@@ -40,7 +41,8 @@
             <!-- Minimum IMDb Rating -->
             <md-card flex="50">
                 <md-card-header>
-                    <span class="md-title">Minimum IMDb Rating: {{filters.minimum_rating}}</span>
+                    <img class="png-icon" src="img/imdb.png">
+                    <span class="md-title">&nbsp;Minimum IMDb Rating: {{filters.minimum_rating}}</span>
                 </md-card-header>
                 <md-card-content>
                     <md-slider flex step="1" md-discrete min="0" max="9" ng-model="filters.minimum_rating" aria-label="Minimum IMDb Rating"></md-slider>
@@ -50,14 +52,39 @@
             <!-- Video Quality -->
             <md-card flex="50">
                 <md-card-header>
-                    <span class="md-title">Video Quality: <span class="capitalize">{{filters.quality}}</span></span>
+                    <md-icon md-svg-src="img/ic_high_quality_black_24px.svg"></md-icon>
+                    <span flex class="md-title">&nbsp;Video Quality: <span class="capitalize">{{filters.quality}}</span></span>
                 </md-card-header>
                 <md-card-content>
                     <md-radio-group ng-model="filters.quality">
                         <md-radio-button value="all" class="md-primary">All</md-radio-button>
                         <hr>
-                        <section layout="row" layout-wrap layout-align="space-around center">
+                        <section layout="row" layout-wrap layout-align="space-between center">
                             <md-radio-button flex="20" ng-repeat="quality in videoQualities" value="{{quality.value}}">{{quality.name}}</md-radio-button>
+                        </section>
+                    </md-radio-group>
+                </md-card-content>
+            </md-card>
+
+        </div>
+
+        <div layout="row" flex>
+
+            <md-card flex style="margin-bottom: 20px;">
+                <md-card-header>
+                    <md-icon md-svg-src="img/ic_sort_black_24px.svg"></md-icon>
+                    <span flex class="md-title">&nbsp;Sort</span>
+                </md-card-header>
+                <md-card-content>
+                    <md-radio-group ng-model="filters.sort_by">
+                        <section layout="row" layout-wrap layout-align="space-between center">
+                            <md-radio-button flex="20" ng-repeat="sorter in sorters" value="{{sorter.value}}">{{sorter.name}}</md-radio-button>
+                        </section>
+                    </md-radio-group>
+                    <hr>
+                    <md-radio-group ng-model="filters.order_by">
+                        <section layout="row" layout-wrap layout-align="space-between center">
+                            <md-radio-button flex="50" ng-repeat="order in orders" value="{{order.value}}">{{order.name}}</md-radio-button>
                         </section>
                     </md-radio-group>
                 </md-card-content>

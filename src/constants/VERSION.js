@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('200mins-web').constant('VERSION', '4');
+angular.module('200mins-web').constant('VERSION', '5');

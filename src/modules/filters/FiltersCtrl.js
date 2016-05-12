@@ -35,6 +35,18 @@ angular.module('200mins-web').controller('FiltersCtrl', ['$rootScope', '$scope',
             {name: 'Western', value: 'western'}
         ];
 
+        $scope.orders = [
+            {name: 'Ascending', value: 'asc'},
+            {name: 'Descending', value: 'desc'}
+        ];
+
+        $scope.sorters = [
+            {name: 'Year Released', value: 'year'},
+            {name: 'Title', value: 'title'},
+            {name: 'IMDb Rating', value: 'rating'},
+            {name: 'Date Added', value: 'date_added'}
+        ];
+
         $scope.videoQualities = [
             {name: '3D', value: '3D'},
             {name: '720p', value: '720p'},
@@ -45,7 +57,7 @@ angular.module('200mins-web').controller('FiltersCtrl', ['$rootScope', '$scope',
 
         $scope.initialize = function () {
 
-            $scope.filters = {genre: 'all', minimum_rating: 0, quality: 'all'};
+            $scope.filters = {genre: 'all', minimum_rating: 0, quality: 'all', sort_by: 'date_added', order_by: 'desc'};
 
             var filters = localStorageService.get('filters');
 
