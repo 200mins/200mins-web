@@ -17,7 +17,7 @@
 
 <div layout="row" layout-align="space-around start" layout-wrap>
 
-    <md-card style="width: 250px; cursor: pointer;" ng-repeat="newUser in newUsers" ng-click="$root.changeState('user.statistics', {username: user.username})">
+    <md-card style="width: 250px; cursor: pointer;" ng-repeat="newUser in newUsers" ng-click="$root.changeState('user.statistics', {username: newUser.username})">
         <img ng-src="{{newUser.avatar}}" alt="{{newUser.username}}">
         <md-card-content>
             <h3>{{newUser.username}}</h3>
