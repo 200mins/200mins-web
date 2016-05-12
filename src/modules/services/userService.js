@@ -36,6 +36,34 @@ angular
 
                 };
 
+                this.getNewUsers = function () {
+
+                    return $http.get($rootScope.apiURL + 'user/new').then(function (response) {
+
+                        if (ENV !== 'PROD') {
+
+                            console.info('getNewUsers: ', response);
+
+                        }
+
+                        // 200
+                        return response;
+
+                    }, function (err) {
+
+                        if (ENV !== 'PROD') {
+
+                            console.warn('getNewUsers: ', err);
+
+                        }
+
+                        // 400 || 403 || 500    
+                        return err;
+
+                    });
+
+                };
+
                 this.getByUsername = function (username) {
 
                     return $http.get($rootScope.apiURL + 'user/' + username).then(function (response) {

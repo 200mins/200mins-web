@@ -47,6 +47,8 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
             localStorageService.remove('user');
 
             $rootScope.isUserInitialized = false;
+            
+            sessionStorage.clear();
 
             $rootScope.initializeUser();
 
