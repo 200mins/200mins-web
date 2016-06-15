@@ -5,8 +5,8 @@ angular.module('200mins-web').config(['ENV', '$compileProvider', '$locationProvi
         $compileProvider.debugInfoEnabled(false);
 
         $mdThemingProvider.theme('default')
-                .primaryPalette('pink')
-                .accentPalette('indigo');
+                .primaryPalette('indigo')
+                .accentPalette('pink');
 
         if (ENV === 'PROD') {
 
@@ -25,7 +25,7 @@ angular.module('200mins-web').config(['ENV', '$compileProvider', '$locationProvi
                     templateUrl: 'modules/filters/filters.html',
                     url: '/filters'
                 })
-                
+
                 .state('search', {
                     controller: 'SearchCtrl',
                     templateUrl: 'modules/search/search.html',

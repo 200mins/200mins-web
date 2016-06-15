@@ -47,7 +47,7 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
             localStorageService.remove('user');
 
             $rootScope.isUserInitialized = false;
-            
+
             sessionStorage.clear();
 
             $rootScope.initializeUser();
@@ -184,6 +184,12 @@ angular.module('200mins-web').run(['CONFIG', 'ENV', 'VERSION', '$location', '$md
             }
 
         });
+
+        if (!localStorageService.get('filters')) {
+
+            localStorageService.set('filters', {"minimum_rating":8,"sort_by":"year","order_by":"desc"});
+
+        }
 
         $rootScope.initialize();
 

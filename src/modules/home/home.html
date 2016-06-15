@@ -1,10 +1,22 @@
 <!-- Hero -->
-<div class="hero" style="background-image: url('img/hero.png');">
+<div class="hero" style="background-image: url('img/hero.jpeg');">
     <h1>everything movies. <span class="blink">|</span></h1>
     <md-button class="md-raised md-primary" ng-click="$root.changeState('movies')" aria-label="Browse Now">
         <span>Browse Now</span>
     </md-button>
 </div>
+
+<!-- Features -->
+<div layout="column">
+    <md-toolbar style="background-color: white; margin-bottom: 10px;">
+        <div class="md-toolbar-tools">
+            <span style="color: black;">Features</span>
+        </div>
+    </md-toolbar>
+</div>
+
+<!-- Feature tiles -->
+<div ng-include="'templates/feature-tiles.html'" style="padding-bottom: 10px;"></div>
 
 <!-- New Users -->
 <div layout="column">
@@ -15,7 +27,7 @@
     </md-toolbar>
 </div>
 
-<div layout="row" layout-align="space-around start" layout-wrap>
+<div layout="row" layout-align="space-around start" layout-wrap style="padding-bottom: 10px;">
 
     <md-card style="width: 250px; cursor: pointer;" ng-repeat="newUser in newUsers" ng-click="$root.changeState('user.statistics', {username: newUser.username})">
         <img ng-src="{{newUser.avatar}}" alt="{{newUser.username}}">
@@ -26,15 +38,3 @@
     </md-card>
 
 </div>
-
-<!-- Features -->
-<div layout="column">
-    <md-toolbar style="background-color: white; margin: 10px 0;">
-        <div class="md-toolbar-tools">
-            <span style="color: black;">Features</span>
-        </div>
-    </md-toolbar>
-</div>
-
-<!-- Feature tiles -->
-<div ng-include="'templates/feature-tiles.html'" style="padding-bottom: 10px;"></div>

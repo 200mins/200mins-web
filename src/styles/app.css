@@ -39,10 +39,10 @@ svg {
     opacity: 0; } }
 
 .hero {
-  background-position: top center;
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 250px 0;
+  padding: 150px 0;
   text-align: center; }
 
 .hero h1 {

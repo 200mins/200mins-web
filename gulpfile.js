@@ -4,7 +4,6 @@ var concat = require('gulp-concat');
 var cssmin = require('gulp-cssmin');
 var htmlmin = require('gulp-htmlmin');
 var htmlreplace = require('gulp-html-replace');
-var imagemin = require('gulp-imagemin');
 var mainBowerFiles = require('main-bower-files');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
@@ -74,7 +73,6 @@ gulp.task('static', ['assets', 'favicon', 'templates'], function () {
 
 gulp.task('assets', function () {
     return gulp.src('./src/img/*.*')
-            .pipe(imagemin())
             .pipe(gulp.dest('./dist/img/'));
 });
 
