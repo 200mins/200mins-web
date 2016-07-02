@@ -31,7 +31,7 @@
 
     <md-card style="width: 250px; cursor: pointer;" ng-repeat="newUser in newUsers" ng-click="$root.changeState('user.statistics', {username: newUser.username})">
         <img ng-src="{{newUser.avatar}}" alt="{{newUser.username}}">
-        <md-card-content>
+        <md-card-content style="padding: 0; padding-bottom: 10px; text-align: center;">
             <h3>{{newUser.username}}</h3>
             <span>Joined <strong>~{{$root.getTimeStringFromNow(newUser.createdAt)}}</strong></span>
         </md-card-content>
